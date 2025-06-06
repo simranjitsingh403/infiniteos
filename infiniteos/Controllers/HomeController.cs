@@ -28,6 +28,10 @@ namespace infiniteos.Controllers
             return View();
         }
 
+        public IActionResult ContactUs()
+        {
+            return View();
+        }
         public IActionResult Services()
         {
             return View();
