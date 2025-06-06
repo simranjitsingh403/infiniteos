@@ -1226,7 +1226,7 @@ body.page-template-default .header .button {
 }
 
 .title--xsmall {
-    font-size: 1.9vw;
+    font-size: 1.5vw;
     margin-bottom: 0
 }
 
@@ -6923,8 +6923,8 @@ body.page-template-default .header .button {
 
 
 #testBtn:hover {
-    border-color: red !important;
-    background: red !important;
+    border-color: #a566c5 !important;
+    background: #a566c5 !important;
 }
 
 #webgl-canvas {
@@ -7225,4 +7225,21 @@ body.page-template-default .header .button {
         #navbar_links li:hover {
             color: lightskyblue;
         }
+
+#webgl-canvas-About-us {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Behind your content */
+}
+
+#about-us {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
 

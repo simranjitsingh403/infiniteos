@@ -6760,8 +6760,8 @@ body.single-case {
 
 
 #testBtn:hover {
-    border-color: red !important;
-    background: red !important;
+    border-color: #a566c5 !important;
+    background: #a566c5 !important;
 }
 
 #webgl-canvas {
