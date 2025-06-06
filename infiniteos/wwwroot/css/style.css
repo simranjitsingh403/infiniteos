@@ -6926,3 +6926,11 @@ body.page-template-default .header .button {
     border-color: red !important;
     background: red !important;
 }
+
+#aboutbg {
+    background: white;
+}
+
+#about_section {
+    background: #000a33;
+}
