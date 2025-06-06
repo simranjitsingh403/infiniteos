@@ -6991,18 +6991,20 @@ body.page-template-default .header .button {
     left: 50%;
     position: absolute;
     text-align: center;
-    background: #fafaf8;
+    background: black;
     transform: translateX(-50%);
     height: 85%;
     width: 80%;
     border-radius: var(--radius);
     padding: 20% 10%;
+    opacity:0.5;
 }
 
 .hoverCardContent{
     font-weight:500;
     font-size: 18px;
     line-height:1.2;
+    color:white;
 }
 
 
@@ -7224,10 +7226,3 @@ body.page-template-default .header .button {
             color: lightskyblue;
         }
 
-#border-Box {
-    border-radius: 10px;
-    box-shadow: 15px 15px 8px 0px #0000000d;
-}
-#menu-main-menu {
-    color: white;
-}
