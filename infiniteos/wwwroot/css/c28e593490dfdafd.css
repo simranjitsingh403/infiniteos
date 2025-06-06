@@ -1,0 +1,424 @@
+
+.btn-secondary {
+    background: linear-gradient(-60deg,#ff0100,#282828) !important;
+    border: none !important;
+    color: #fff !important;
+    border-radius: 45px !important
+}
+
+.btn-primary {
+    background: hsla(0,0%,7%,.396) !important;
+    border-color: hsla(0,0%,100%,.502) !important;
+    border-radius: 45px !important;
+    position: relative
+}
+
+    .btn-primary, .btn-primary:before {
+        color: #fff !important;
+        transition: .3s
+    }
+
+        .btn-primary:before {
+            content: "";
+            height: 0;
+            width: 0;
+            background: #ff0100 !important;
+            left: 0;
+            top: 0;
+            right: 0;
+            margin: auto;
+            position: absolute;
+            border-radius: 45px
+        }
+
+        .btn-primary span {
+            position: relative;
+            font-family: PP-neue-montreal-book !important;
+            transition: .3s
+        }
+
+        .btn-primary:hover {
+            border-color: #ff0100 !important;
+            transition: .3s
+        }
+
+            .btn-primary:hover:before {
+                width: 100%;
+                height: 100%
+            }
+
+            .btn-primary:hover span {
+                color: #fff !important
+            }
+
+
+.button-stop-recording {
+    height: 350px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #004a7f;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Arial;
+    font-size: 20px;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    animation: glowing 1.5s infinite
+}
+
+
+
+
+.contactus-section .contact-card-transparent, .whychooseusecardtransparent {
+    background-color: hsla(0,0%,100%,.05) !important;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    color: #fff
+}
+
+.contactus-section .form-control-transparent {
+    background-color: hsla(0,0%,100%,.08);
+    color: #fff;
+    border: 1px solid hsla(0,0%,100%,.3)
+}
+
+    .contactus-section .form-control-transparent::placeholder {
+        color: hsla(0,0%,100%,.6)
+    }
+
+    .contactus-section .form-control-transparent:focus {
+        background-color: hsla(0,0%,100%,.1);
+        border-color: hsla(0,0%,100%,.6);
+        box-shadow: none;
+        color: #fff
+    }
+
+.contactus-section .is-invalid {
+    border-color: #dc3545 !important
+}
+
+.contactus-section .invalid-feedback {
+    color: #f8d7da
+}
+
+
+
+.client-success-story {
+    background: linear-gradient(rgba(0,0,0,.714),rgba(0,0,0,.714)),url(/_next/static/media/accountfinance.b98a70f3.jpg) 50%/cover;
+    background-attachment: fixed
+}
+
+    .client-success-story .client-story-image .client-image {
+        height: 400px;
+        border-radius: 8px;
+        overflow: hidden
+    }
+
+.our-services {
+    background-color: #000a33
+}
+
+    .our-services h2 {
+        position: relative;
+        margin-bottom: 30px !important
+    }
+
+        .our-services h2:after {
+            left: 0;
+            transform: unset
+        }
+
+
+footer {
+   
+ 
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden
+}
+
+
+
+
+.me_design {
+    background-color: #000a33;
+    text-align: center;
+    padding: 2rem 0;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+    .me_design h3 {
+        font-size: 2.6rem;
+        margin-bottom: 4rem
+    }
+
+    .me_design h3, .me_design p {
+        font-weight: 500;
+        text-transform: uppercase;
+        color: #fff
+    }
+
+    .me_design p {
+        font-size: 4rem
+    }
+
+        .me_design p .l {
+            overflow: clip
+        }
+
+    .me_design .about_slider_in {
+        -webkit-clip-path: circle(0 at 50% 50%);
+        clip-path: circle(0 at 50% 50%);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%
+    }
+
+        .me_design .about_slider_in video {
+            width: 100%;
+            object-fit: fill;
+            height: 100%
+        }
+
+.containerDrawSvg .container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+
+.containerDrawSvg .svg__shape {
+    position: absolute;
+    width: calc(100% + 300px)
+}
+
+
+
+.company-overview .ant-carousel .slick-next, .company-overview .ant-carousel .slick-prev {
+    top: -80px !important;
+    height: 50px !important;
+    width: 50px !important
+}
+
+.company-overview .ant-carousel .slick-prev {
+    right: 60px !important;
+    left: auto !important
+}
+
+.company-overview .col-small {
+    width: 46% !important
+}
+
+.company-overview .col-large {
+    width: 54% !important
+}
+
+.company-overview .company-overview-card {
+    height: 400px;
+    border-radius: 32px;
+    background-color: #000a33;
+    overflow: hidden;
+    padding: 40px;
+    display: flex;
+    flex-direction: column
+}
+
+    .company-overview .company-overview-card img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover
+    }
+
+    .company-overview .company-overview-card h3 {
+        font-size: 36px;
+        font-weight: 600;
+        color: #fff;
+        height: 80px;
+        min-height: 80px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 80px;
+        background-color: hsla(0,0%,100%,.31)
+    }
+
+    .company-overview .company-overview-card p {
+        color: #fff;
+        opacity: .8;
+        font-size: 14px
+    }
+
+    .company-overview .company-overview-card .ant-progress .ant-progress-inner {
+        background-color: #fff !important;
+        height: 3px !important
+    }
+
+    .company-overview .company-overview-card .ant-progress-bg {
+        background-color: #ff0100 !important
+    }
+
+.cta-section {
+    margin-bottom: -180px;
+    position: relative;
+    z-index: 1
+}
+
+    .cta-section .cta-container {
+        padding: 60px;
+        border-radius: 32px;
+        text-align: center;
+        position: relative
+    }
+
+        .cta-section .cta-container h3 {
+            font-size: 44px
+        }
+
+        .cta-section .cta-container:before {
+            position: absolute;
+            content: "";
+            height: 0;
+            width: 0;
+            border-radius: 50%;
+            background-color: hsla(0,0%,100%,.341);
+           
+            left: 60px;
+            top: 60px
+        }
+
+.new-why-chooseUs svg {
+    height: 40px;
+    width: 40px
+}
+
+.new-why-chooseUs p {
+    font-size: 14px;
+    opacity: .7
+}
+
+.new-why-chooseUs h3 {
+    font-size: 30px
+}
+
+.new-why-chooseUs .choose-us-title-container {
+    perspective: 1000px;
+    height: 454px;
+    background-color: #000a33;
+    text-align: center;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer
+}
+
+    .new-why-chooseUs .choose-us-title-container .card-inner {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform .8s ease;
+        border-radius: 20px
+    }
+
+    .new-why-chooseUs .choose-us-title-container:hover .card-inner {
+        transform: rotateY(180deg)
+    }
+
+    .new-why-chooseUs .choose-us-title-container .choose-us-title-inner {
+        padding: 24px;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-radius: 20px;
+        transition: .5s
+    }
+
+        .new-why-chooseUs .choose-us-title-container .choose-us-title-inner * {
+            color: #fff
+        }
+
+    .new-why-chooseUs .choose-us-title-container .chooseUs-flip-card-1 {
+        background-color: #000a33;
+        z-index: 2
+    }
+
+    .new-why-chooseUs .choose-us-title-container .chooseUs-flip-card-2 {
+        background-color: hsla(0,0%,100%,.184);
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+        transform: rotateY(180deg);
+        z-index: 1
+    }
+
+.new-why-chooseUs .choose-us-card {
+    padding: 20px;
+    border-radius: 20px;
+    height: 224px;
+    min-height: 224px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #f1f4ff
+}
+
+    .new-why-chooseUs .choose-us-card p {
+        font-family: PP-neue-montreal !important
+    }
+
+.our-approach {
+    background-color: #000a33;
+    margin-bottom: 80px
+}
+
+    .our-approach h3 {
+        font-size: 56px;
+        color: #fff
+    }
+
+    .our-approach h4, .our-approach p {
+        color: #fff
+    }
+
+    .our-approach p {
+        opacity: .8
+    }
+
+    .our-approach .our-approach-container svg {
+        height: 36px;
+        width: 36px;
+        stroke: #ff0100;
+        margin-top: 4px
+    }
+
+.our-benefits {
+    background-color: #fff
+}
+
+    .our-benefits h3, .our-benefits h4, .our-benefits p {
+        color: #000a33
+    }
