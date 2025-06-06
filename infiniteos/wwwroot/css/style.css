@@ -6934,3 +6934,22 @@ body.page-template-default .header .button {
 #about_section {
     background: #000a33;
 }
+
+.hoverCard {
+    bottom: 2.0vw;
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    background: white;
+    transform: translateX(-50%);
+    height: 85%;
+    width: 80%;
+    border-radius: var(--radius);
+    padding: 20% 10%;
+}
+
+.hoverCardContent{
+    font-weight:500;
+    font-size: 18px;
+    line-height:1.2;
+}
