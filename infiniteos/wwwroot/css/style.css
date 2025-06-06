@@ -6926,3 +6926,54 @@ body.page-template-default .header .button {
     border-color: red !important;
     background: red !important;
 }
+
+#webgl-canvas {
+    background: linear-gradient(130deg, #000a33, #000726, #48008d);
+    background-size: 200% 200%;
+    -webkit-animation: Animation 10s ease infinite;
+    -moz-animation: Animation 10s ease infinite;
+    animation: Animation 10s ease infinite;
+}
+
+@-webkit-keyframes Animation {
+    0% {
+        background-position: 10% 0%
+    }
+
+    50% {
+        background-position: 91% 100%
+    }
+
+    100% {
+        background-position: 10% 0%
+    }
+}
+
+@-moz-keyframes Animation {
+    0% {
+        background-position: 10% 0%
+    }
+
+    50% {
+        background-position: 91% 100%
+    }
+
+    100% {
+        background-position: 10% 0%
+    }
+}
+
+@keyframes Animation {
+    0% {
+        background-position: 10% 0%
+    }
+
+    50% {
+        background-position: 91% 100%
+    }
+
+    100% {
+        background-position: 10% 0%
+    }
+}
+
