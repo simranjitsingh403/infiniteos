@@ -1,42 +1,57 @@
 ﻿<div id="vhr"></div>
 <div id="menu" class="menu">
     <div class="menu__mask"></div>
-    <div class="menu__content">
-        <ul id="menu-menu-principal" class="menu_header">
-            <li id="menu-item-247" class="menu-item--home menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-9 current_page_item menu-item-247 is-active "><a href="https://mioticonsulting.dgrees.studio/" aria-current="page">Home</a></li>
-            <li id="menu-item-249" class="menu-item--data menu-item menu-item-type-post_type menu-item-object-page menu-item-249"><a href="https://mioticonsulting.dgrees.studio/data-strategy/">About Us</a></li>
-            <li class="menu-item--about menu-item menu-item-type-post_type menu-item-object-page menu-item-250"><a href="~/Home/Services">Services</a></li>
-            <li id="menu-item-250" class="menu-item--about menu-item menu-item-type-post_type menu-item-object-page menu-item-250"><a href="https://mioticonsulting.dgrees.studio/nosotros/">Industries</a></li>
-            <li id="menu-item-248" class="menu-item--ai menu-item menu-item-type-post_type menu-item-object-page menu-item-248"><a href="https://mioticonsulting.dgrees.studio/ai-strategy/">Contact Us</a></li>
-        </ul>
-        <div id="button--request" class="button button--primary button--request" data-mobile>
-        </div>
-    </div>
 </div>
 <header id="header" class="header">
+    <div id="arrow" class="arrow" data-desktop="" style="display: block; opacity: 1;"></div>
     <div class="container container--large">
         <div class="columns">
-            <div class="columns__item">
-                <a style="width:230px;" href="#" id="logo" class="logo"></a>
+          
+            <div class="columns__item" id="navbar_links">
+                 <div id="border-Box1">
+                    <a style="width:230px;" href="#" id="logo" class="logo"></a>
+
+                    <div class="site-menu" style="font-size:x-large">
+                        <ul id="menu-main-menu" class="nav-menu">
+                            <li id="menu-item-60" style="padding:15px;" class="nav-item"><a href="https://sctconsulting.com.au/about-us/" class="nav-link"><u>Home</u></a><i></i></li>
+                            <li id="menu-item-2435" style="padding:15px;" class="nav-item"><a href="https://sctconsulting.com.au/team/" class="nav-link"><u>About Us</u></a></li>
+                            <li id="menu-item-59" style="padding:15px;" class="nav-item"><a href="https://localhost:7200/home/services" class="nav-link"><u>Services</u></a></li>
+                            <li id="menu-item-58" style="padding:15px;" class="nav-item"><a href="https://sctconsulting.com.au/projects/" class="nav-link"><u>Industries</u></a></li>
+                            <li id="menu-item-35" style="padding:15px;" class="nav-item"><a href="https://sctconsulting.com.au/news/" class="nav-link"><u>Contact Us</u></a></li>
+                        </ul>
+                    </div>
+                 </div>
+                
             </div>
             <div class="columns__item" data-desktop>
-
-                <div id="trigger" class="trigger button--primary button--request">
-                    <div class="trigger__inner center">
-                        <div class="trigger__item trigger__item--top"></div>
-                        <div class="trigger__item trigger-middle"></div>
-                        <div class="trigger__item trigger__item--bottom"></div>
-                    </div>
+                <div id="trigger">
                 </div>
             </div>
             <div class="columns__item" data-mobile>
-                <div id="trigger" class="trigger">
-                    <div class="trigger__inner center">
-                        <div class="trigger__item trigger__item--top"></div>
-                        <div class="trigger__item trigger__item--bottom"></div>
-                    </div>
+                <div id="trigger">
                 </div>
             </div>
         </div>
     </div>
 </header>
+
+
+                                <script>
+    const logo = document.getElementById('logo');
+    const target = document.getElementById('menu-main-menu');
+
+    function syncOpacity() {
+        const logoOpacity = parseFloat(window.getComputedStyle(logo).opacity);
+        target.style.opacity = logoOpacity;
+    }
+
+    // Observe opacity changes on #logo
+    const observer = new MutationObserver(syncOpacity);
+    observer.observe(logo, {
+        attributes: true,
+        attributeFilter: ['style']
+    });
+
+    // Sync once on load
+    syncOpacity();
+</script>

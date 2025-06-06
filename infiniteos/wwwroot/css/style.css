@@ -7004,3 +7004,26 @@ body.page-template-default .header .button {
     font-size: 18px;
     line-height:1.2;
 }
+
+#navbar_links {
+    width: inherit;
+    text-align: right;
+}
+
+    #navbar_links li {
+        display: inline-block;
+        margin: 0 0.5%;
+        font-weight: 500;
+    }
+
+        #navbar_links li:hover {
+            color: lightskyblue;
+        }
+
+#border-Box {
+    border-radius: 10px;
+    box-shadow: 15px 15px 8px 0px #0000000d;
+}
+#menu-main-menu {
+    color: white;
+}
