@@ -6992,7 +6992,7 @@ body.page-template-default .header .button {
     left: 50%;
     position: absolute;
     text-align: center;
-    background: white;
+    background: #fafaf8;
     transform: translateX(-50%);
     height: 85%;
     width: 80%;
