@@ -6977,15 +6977,6 @@ body.page-template-default .header .button {
     }
 }
 
-
-#aboutbg {
-    background: white;
-}
-
-#about_section {
-    background: #000a33;
-}
-
 .hoverCard {
     bottom: 2.0vw;
     left: 50%;
@@ -7241,5 +7232,3 @@ body.page-template-default .header .button {
     overflow: hidden;
     z-index: 1;
 }
-
-
