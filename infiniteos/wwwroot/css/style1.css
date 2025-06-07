@@ -2422,24 +2422,24 @@ body.single-case {
     width: 100%
 }
 
-.trigger__item--top {
-    transform: translate(-50%, -8px);
+.header .trigger__item--top {
+    transform: translate(-50%,-350%)
 }
 
-.trigger-middle {
-    transform: translate(-50%, 0);
+@media (max-width:1024px) {
+    .header .trigger__item--top {
+        transform: translate(-50%,-500%)
+    }
 }
 
-.trigger__item--bottom {
-    transform: translate(-50%, 8px);
+.header .trigger__item--bottom {
+    transform: translate(-50%,260%)
 }
 
-.trigger--active .trigger__item--top {
-    transform: translate(-50%, 0) rotate(45deg);
-}
-
-.trigger--active .trigger__item--bottom {
-    transform: translate(-50%, 8px) scaleX(0); /* <-- hiding it */
+@media (max-width:1024px) {
+    .header .trigger__item--bottom {
+        transform: translate(-50%,400%)
+    }
 }
 
 .footer {
