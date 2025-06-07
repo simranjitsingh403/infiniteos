@@ -41,7 +41,9 @@
         </div>
     </div>
 </div>
+@* <div id="scrollToTopBtn" class="arrow" data-desktop="">
 
+</div> *@
 <header class="_header_qr60b_23 _bannerClosed_qr60b_35" id="navBar">
     <div class="_itemsWrapper_qr60b_95">
         <button class="_logoWrapper_qr60b_153" >
@@ -137,27 +139,22 @@
     </div>
 </header>
 <script>
-    // const logo = document.getElementById('logo');
-    // const target = document.getElementById('navBar');
+    const target = document.getElementById('navBar');
+        let lastScrollY = window.scrollY;
 
-    // function syncOpacity() {
-      
-    //     const logoOpacity = parseFloat(window.getComputedStyle(logo).opacity);
-    //     target.style.opacity = logoOpacity;
-    // }
+        window.addEventListener('wheel', (event) => {
+          const currentScrollY = window.scrollY;
 
-    // // Observe opacity changes on #logo
-    // const observer = new MutationObserver(syncOpacity);
-    // observer.observe(logo, {
-    //     attributes: true,
-    //     attributeFilter: ['style']
-    // });
+          if (event.deltaY > 0) {
+            // Scroll down → hide
+            target.classList.add('hidden');
+          } else {
+            // Scroll up → show immediately
+            target.classList.remove('hidden');
+          }
 
-    // // Sync once on load
-    // syncOpacity();
+          lastScrollY = currentScrollY;
+        });
 
-      function GoToURL(value){
-        window.open(value, '_self');
-    }
-
+    
 </script>
