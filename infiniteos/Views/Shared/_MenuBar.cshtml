@@ -1,4 +1,32 @@
-﻿<div id="vhr"></div>
+﻿<style>
+    .arrow {
+        background-color: #fafaf8;
+        background-image: url(Assets/Images/ico-arrow.svg);
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: 20%;
+        border-radius: 50%;
+        bottom: 2.5vw;
+        box-shadow: 0 0 60px rgba(0,0,0,.1);
+        cursor: pointer;
+        height: 5vw;
+        line-height: 5vw;
+        position: fixed;
+        right: 2.5vw;
+        transform: scale(1);
+        width: 5vw
+    }
+
+        .arrow, .arrow:hover {
+            transition: transform .5s ease-out
+        }
+
+            .arrow:hover {
+                transform: scale(.9)
+            }
+</style>
+
+<div id="vhr"></div>
 <div id="menu" class="menu" style="display:none">
     <div class="menu__mask"></div>
     <div class="menu__content">
