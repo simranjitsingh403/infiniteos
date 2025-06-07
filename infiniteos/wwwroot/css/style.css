@@ -7241,5 +7241,30 @@ body.page-template-default .header .button {
     overflow: hidden;
     z-index: 1;
 }
+.jumble-text {
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+._headerNav_qr60b_153 {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* horizontally center the <ol> inside nav */
+}
+
+._headerNavOl_qr60b_312 {
+    display: flex;
+    gap: 4%; /* space between nav items */
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+}
+
+._textScrambleAnimation_1mtai_28 {
+    display: inline-block;
+    position: relative;
+}
 
 

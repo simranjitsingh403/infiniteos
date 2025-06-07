@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 
-    <meta name="google" content="notranslate">
     <meta charset="UTF-8">
     <title>Infinite Outsourcing System</title>
     <link href="~/favicon.ico" rel="shortcut icon">
@@ -12,18 +11,19 @@
     <link href="~/css/contactus/web-i13hnk8_.css" rel="stylesheet" />
 
     <style>
-        body {
-            height: 2000px; /* To enable scrolling */
+        #navBar {
+            transition: opacity 0.5s ease;
+            opacity: 1;
+            pointer-events: auto;
+            position: fixed;
+            top: 0;
+            width: 100%;
         }
 
-        #scrollUpBtn {
-            position: fixed;
-            bottom: 40px;
-            right: 40px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
+            #navBar.hidden {
+                opacity: 0;
+                pointer-events: none;
+            }
     </style>
 </head>
 <body>
@@ -110,64 +110,52 @@
 
         draw();
     </script>
+    <script>
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!#$%^&*';
+        document.querySelectorAll('.jumble-text').forEach(link => {
+          const textSpan = link.querySelector('._absoluteText_1mtai_23');
+          const originalText = textSpan.textContent;
 
+          link.addEventListener('mouseenter', () => {
+            let iterations = 0;
+            const interval = setInterval(() => {
+              textSpan.textContent = originalText
+                .split('')
+                .map((char, i) => {
+                  if (i < iterations) return originalText[i];
+                  return characters[Math.floor(Math.random() * characters.length)];
+                })
+                .join('');
+
+              iterations += 1 / 2; // speed of resolving
+              if (iterations >= originalText.length) {
+                clearInterval(interval);
+                textSpan.textContent = originalText;
+              }
+            }, 40); // speed of jumble
+          });
+        });
+    </script>
+    <script>
+                                           const target = document.getElementById('navBar');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('wheel', (event) => {
+          const currentScrollY = window.scrollY;
+
+          if (event.deltaY > 0) {
+            // Scroll down → hide
+            target.classList.add('hidden');
+          } else {
+            // Scroll up → show immediately
+            target.classList.remove('hidden');
+          }
+
+          lastScrollY = currentScrollY;
+        });
+
+    </script>
 </body>
 </html>
 
-@* <script>
-    const canvas = document.getElementById('webgl-canvas');
-     const ctx = canvas.getContext('2d');
 
-    let mouseX = 0, mouseY = 0, scrollY = 0;
-    let time = 0;
-
-    function resizeCanvas() {
-      canvas.width = canvas.clientWidth;
-      canvas.height = canvas.clientHeight;
-    }
-
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    window.addEventListener('mousemove', (e) => {
-      const rect = canvas.getBoundingClientRect();
-      mouseX = e.clientX - rect.left;
-      //mouseY = e.clientY - rect.top;
-    });
-
-    window.addEventListener('scroll', () => {
-      scrollY = window.scrollY;
-    });
-
-    function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const centerX = canvas.width / 2;
-      const centerY = canvas.height / 2;
-      const maxRadius = Math.sqrt(centerX * centerX + centerY * centerY);
-      const ringSpacing = 50;
-      const dotsPerRing = 50;
-      const dotSize = 2;
-
-      time += 0.01;
-
-      for (let r = 0; r < maxRadius; r += ringSpacing) {
-        const dynamicRadius = r + Math.sin(time + r * 0.02) * 2;
-
-        for (let i = 0; i < dotsPerRing; i++) {
-          const angle = (i / dotsPerRing) * Math.PI * 2 + time * 0.15 + scrollY * 0.0002;
-
-          const x = centerX + Math.cos(angle) * dynamicRadius + (mouseX - centerX) * 0.0005 * dynamicRadius;
-          const y = centerY + Math.sin(angle) * dynamicRadius + (mouseY - centerY) * 0.0005 * dynamicRadius;
-
-          ctx.beginPath();
-          ctx.arc(x, y, dotSize, 0, 2 * Math.PI);
-          ctx.fillStyle = 'rgba(6, 147, 227, 1)';
-          ctx.fill();
-        }
-      }
-
-      requestAnimationFrame(draw);
-    }
-
-    draw();
-</script> *@

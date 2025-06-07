@@ -6834,27 +6834,29 @@ body.single-case {
     border-radius: 10px;
     box-shadow: 15px 15px 8px 0px #0000000d;
 }
-/*.arrow {
-    background-color: #fff;
-    background-color: var(--bg-white);
-    background-image: url(img/ico-arrow.svg);
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-size: 20%;
-    border-radius: 50%;
-    bottom: 2.5vw;
-    box-shadow: 0 0 60px rgba(0, 0, 0, .1);
+
+.jumble-text {
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
     cursor: pointer;
-    display: none;
-    height: 5vw;
-    line-height: 5vw;
-    opacity: .0001;
-    position: fixed;
-    right: 2.5vw;
-    transform: scale(1);
-    width: 5vw;
 }
-    .arrow, .arrow:hover {
-        transition: transform .5s ease-out;
-    }
-*/
+
+._headerNav_qr60b_153 {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* horizontally center the <ol> inside nav */
+}
+
+._headerNavOl_qr60b_312 {
+    display: flex;
+    gap: 4%; /* space between nav items */
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+}
+
+._textScrambleAnimation_1mtai_28 {
+    display: inline-block;
+    position: relative;
+}
