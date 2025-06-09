@@ -4325,7 +4325,7 @@ body.single-case {
         height: 100vh;
         height: calc(var(--vh, 1vh)*100);
         position: absolute;
-        /*top: 50vh;*/
+        top: 50vh;
         transform: translateY(-50%);
         width: 100vw;
         will-change: clip-path
