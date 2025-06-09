@@ -396,3 +396,16 @@ footer-links{
 .footer-bottom p {
   margin: 0;
 }
+#navBar {
+    transition: opacity 0.5s ease;
+    opacity: 1;
+    pointer-events: auto;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+    #navBar.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }

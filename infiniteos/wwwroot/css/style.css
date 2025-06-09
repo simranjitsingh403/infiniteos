@@ -5759,8 +5759,8 @@ body.page-template-default .header .button {
 .ai__content .category, .data__content .category {
     left: 10vw;
     position: absolute;
-    top: 18vw;
-    width: 13vw
+    top: 23vw;
+    width: 15vw
 }
 
 .ai__content .category__item, .data__content .category__item {
