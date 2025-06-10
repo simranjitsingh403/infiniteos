@@ -8,5 +8,18 @@ namespace infiniteos.Controllers
         {
             return View();
         }
+        public IActionResult Recruiting()
+        {
+            return View();
+        }
+        public IActionResult Consulting()
+        {
+            return View();
+        }
+
+        public IActionResult WarehouseAutomation()
+        {
+            return View();
+        }
     }
 }
