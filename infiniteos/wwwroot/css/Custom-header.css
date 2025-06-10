@@ -984,12 +984,12 @@
 }
 
 .second-section {
-    flex: 0 0 60%; /* Fixed 50% width */
+    flex: 0 0 70%; /* Fixed 50% width */
     padding: 0 4%;
 }
 
 .third-section {
-    flex: 0 0 25%; /* Fixed 25% width */
+    flex: 0 0 15%; /* Fixed 25% width */
 }
 
 .first-section .category{
@@ -1160,6 +1160,10 @@
     color: #9f5ad0;
 }
 
-#applications b {
+#Industry-Trends b {
     color: #9f5ad0;
+}
+
+.second-section .cases__item {
+    margin-bottom: 12% !important;
 }
