@@ -18,6 +18,9 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 var provider = new FileExtensionContentTypeProvider();
 provider.Mappings[".glb"] = "model/gltf-binary";
+provider.Mappings[".mov"] = "video/quicktime";
+provider.Mappings[".webm"] = "video/webm";
+
 
 app.UseStaticFiles(new StaticFileOptions
 {
