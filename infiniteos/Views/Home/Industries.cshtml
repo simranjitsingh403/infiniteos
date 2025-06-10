@@ -2,45 +2,6 @@
     Layout = "~/Views/Shared/_Layout_Dark.cshtml";
 }
 
-<style>
-    .cus-slider-container {
-        overflow-x: auto;
-        overflow-y: hidden;
-        -webkit-overflow-scrolling: touch;
-        white-space: nowrap;
-        display: flex;
-        justify-content: center;
-        /* Hide scrollbars */
-        scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none; /* IE and Edge */
-    }
-
-        .cus-slider-container::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, Opera */
-        }
-
-    .cus-slide-items {
-        display: inline-flex;
-        gap: 20px;
-        padding: 10px;
-    }
-
-    .noselect {
-        user-select: none;
-        -webkit-user-select: none;
-        -ms-user-select: none;
-        -moz-user-select: none;
-    }
-
-    .card1{
-        flex: 0 0 auto;
-        width: 325px;
-    }
-
-    .hoverCardContent{
-        white-space: normal !important;
-    }
-</style>
 <div id="app" data-router-wrapper>
     <div id="data" class="data" data-router-view="data" data-scroll-wrapper data-light>
         <div class="inner">
@@ -613,9 +574,9 @@
                     <span>Why We Serve Diverse Industries?</span>
                 </div>
 
-                <div class="cus-slider-container">
+                <div class="cus-slider-container noselect" style="width:93%;padding-left: 7%;">
                     <div class="cus-slide-items">
-                            <div class="card1">
+                        <div class="card1" style="margin-top: 0.8136vw;">
                                 <div class="image" style="--ratio: 150%">
                                     <img class="lazyload" src="https://mioticonsulting.dgrees.studio/wp-content/uploads/2022/08/equipo-3-200x300.jpg" data-sizes="auto" data-src="https://mioticonsulting.dgrees.studio/wp-content/uploads/2022/08/equipo-3.jpg" alt="" width="480" height="720" />
                                     <div class="image__gradient"></div>
@@ -701,36 +662,3 @@
         </div>
     </div>
 </div>
-
-<script>
-        const slider = document.querySelector('.cus-slider-container');
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-
-    slider.addEventListener('mousedown', (e) => {
-      isDown = true;
-      slider.classList.add('active');
-      slider.classList.add('noselect');
-      startX = e.pageX - slider.offsetLeft;
-      scrollLeft = slider.scrollLeft;
-    });
-    slider.addEventListener('mouseleave', () => {
-      isDown = false;
-      slider.classList.remove('active');
-      slider.classList.remove('noselect');
-    });
-    slider.addEventListener('mouseup', () => {
-      isDown = false;
-      slider.classList.remove('active');
-      slider.classList.remove('noselect');
-    });
-    slider.addEventListener('mousemove', (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - slider.offsetLeft;
-      const walk = (x - startX) * 1.5; // scroll speed
-      slider.scrollLeft = scrollLeft - walk;
-    });
-
-</script>

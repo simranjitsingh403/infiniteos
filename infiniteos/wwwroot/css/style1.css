@@ -2235,8 +2235,8 @@ body.single-case {
 
 .words__inner {
     height: auto;
-    padding-bottom: 35vh;
-    padding-top: 35vh;
+    padding-bottom: 25vh;
+    padding-top: 10vh;
     position: relative;
     width: 100%
 }
@@ -6744,14 +6744,14 @@ body.single-case {
 }
 
 .btn {
-    background: hsla(0, 0%, 7%, .396) !important;
+    background: #82b5f7 !important;
     border-color: hsla(0, 0%, 100%, .502) !important;
     border-radius: 45px !important;
     position: relative;
-
+    color: black;
     display: inline-block;
     padding: 1rem 3rem; /* Matches px-5 py-3 */
-   
+
     font-size: 16px;
     cursor: pointer;
     transition: border-color 0.3s ease;

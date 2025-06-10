@@ -6908,7 +6908,7 @@ body.page-template-default .header .button {
 }
 
 .btn {
-    background: hsla(0, 0%, 7%, .396) !important;
+    background: #82b5f7 !important;
     border-color: hsla(0, 0%, 100%, .502) !important;
     border-radius: 45px !important;
     position: relative;
@@ -6982,13 +6982,13 @@ body.page-template-default .header .button {
     left: 50%;
     position: absolute;
     text-align: center;
-    background: black;
+    background: #061a5f;
     transform: translateX(-50%);
     height: 85%;
     width: 80%;
     border-radius: var(--radius);
     padding: 20% 10%;
-    opacity:0.5;
+    opacity: 1;
 }
 
 .hoverCardContent{
@@ -7256,6 +7256,43 @@ body.page-template-default .header .button {
 ._textScrambleAnimation_1mtai_28 {
     display: inline-block;
     position: relative;
+}
+
+.cus-slider-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+   
+    /* Hide scrollbars */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+    .cus-slider-container::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+    }
+
+.cus-slide-items {
+    display: inline-flex;
+    gap: 20px;
+    padding: 10px;
+}
+
+.noselect {
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+}
+
+.card1 {
+    flex: 0 0 auto;
+    width: 325px;
+}
+
+.hoverCardContent {
+    white-space: normal !important;
 }
 
 
