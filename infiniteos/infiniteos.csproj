@@ -18,4 +18,11 @@
     <Folder Include="wwwroot\videos\usecases\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Views\Services\Staffing1.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
