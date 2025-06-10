@@ -980,11 +980,11 @@
 }
 
 .first-section {
-    flex: 0 0 25%; /* Don't grow, don't shrink, fixed 25% width */
+    flex: 0 0 15%; /* Don't grow, don't shrink, fixed 25% width */
 }
 
 .second-section {
-    flex: 0 0 50%; /* Fixed 50% width */
+    flex: 0 0 60%; /* Fixed 50% width */
     padding: 0 4%;
 }
 
@@ -994,6 +994,8 @@
 
 .first-section .category{
     top:0;
+    left:4vw;
+    width: 11vw;
 }
 
 .second-section .container--special{
@@ -1012,8 +1014,6 @@
 
 .second-section .carousel-container {
     width: 100%;
-    max-width: 800px; /* Adjust max width as needed */
-    padding: 20px;
 }
 
 .second-section .card-stack {
