@@ -1151,3 +1151,15 @@
 .second-section #prev-button {
     margin-right: 1%;
 }
+
+#challenges b {
+    color: #9f5ad0;
+}
+
+#benefits b {
+    color: #9f5ad0;
+}
+
+#applications b {
+    color: #9f5ad0;
+}
