@@ -139,24 +139,21 @@
     </div>
 </header>
 <script>
+
     const target = document.getElementById('navBar');
-        let lastScrollY = window.scrollY;
+    let lastScrollY = window.scrollY;
 
-        window.addEventListener('wheel', (event) => {
-          const currentScrollY = window.scrollY;
+    window.addEventListener('wheel', (event) => {
+        const currentScrollY = window.scrollY;
 
-          if (event.deltaY > 0) {
+        if (event.deltaY > 0) {
             // Scroll down → hide
             target.classList.add('hidden');
-          } else {
+        } else {
             // Scroll up → show immediately
             target.classList.remove('hidden');
-          }
+        }
 
-          lastScrollY = currentScrollY;
-        });
-
-    function GoToURL(value) {
-        window.open(value, '_self');
-    }
+        lastScrollY = currentScrollY;
+    });
 </script>
