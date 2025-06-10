@@ -22,6 +22,10 @@ namespace infiniteos.Controllers
         {
             return View();
         }
+        public IActionResult Terms()
+        {
+            return View();
+        }
 
         public IActionResult AboutUs()
         {

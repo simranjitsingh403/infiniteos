@@ -7294,5 +7294,7 @@ body.page-template-default .header .button {
 .hoverCardContent {
     white-space: normal !important;
 }
-
+#navBar {
+    background: transparent !important;
+}
 
