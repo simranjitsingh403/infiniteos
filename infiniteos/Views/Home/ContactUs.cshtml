@@ -3,47 +3,50 @@
 
 }
 
+<style>
+    .about__hero{
+        padding-top:0;
+    }
+
+    .about__team{
+        padding-top: 0;
+    }
+
+    #globeViz {
+        width: 100%;
+        height: 100%;
+        mask-image: linear-gradient(to top, transparent 0%, black 50%);
+        -webkit-mask-image: linear-gradient(to top, transparent 0%, black 50%);
+    }
+
+    .overlay {
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        bottom: 50%;
+        left: 35%;
+        user-select: none;
+    }
+
+    .contact-section{
+        background-color: #010a33;
+    }
+
+    .cursor-dots{
+        background-color: #010a33;
+    }
+</style>
 <div id="app" data-router-wrapper>
 
 
     <div id="about" class="about" data-router-view="about" data-scroll-wrapper data-light>
         <div class="inner">
 
-            <div id="webgl_background_about" class="background"></div>
+            <div id="webgl_background_about" class="background" style="display:none"></div>
 
             <section class="about__hero">
-
-                <div class="container container--small container--center">
-                    <div class="title title--xlarge title--white title--init">
-                        Contact Us
-                    </div>
-                    <div class="scroll" data-mobile></div>
-                    <div id="scroll" class="scroll scroll--white" data-desktop>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 133.19 133.19">
-                            <circle cx="66.15" cy="2.13" r="2.13" />
-                            <circle cx="86.09" cy="5.15" r="2.13" />
-                            <circle cx="104.13" cy="14.18" r="2.13" />
-                            <circle cx="118.49" cy="28.34" r="2.13" />
-                            <circle cx="127.77" cy="46.25" r="2.13" />
-                            <circle cx="131.06" cy="66.15" r="2.13" />
-                            <circle cx="128.04" cy="86.09" r="2.13" />
-                            <circle cx="119.01" cy="104.13" r="2.13" />
-                            <circle cx="104.85" cy="118.49" r="2.13" />
-                            <circle cx="86.94" cy="127.77" r="2.13" />
-                            <circle cx="67.04" cy="131.06" r="2.13" />
-                            <circle cx="47.1" cy="128.04" r="2.13" />
-                            <circle cx="29.07" cy="119.01" r="2.13" />
-                            <circle cx="14.71" cy="104.85" r="2.13" />
-                            <circle cx="5.42" cy="86.94" r="2.13" />
-                            <circle cx="2.13" cy="67.04" r="2.13" />
-                            <circle cx="5.15" cy="47.1" r="2.13" />
-                            <circle cx="14.18" cy="29.07" r="2.13" />
-                            <circle cx="28.34" cy="14.71" r="2.13" />
-                            <circle cx="46.25" cy="5.42" r="2.13" />
-                        </svg>
-                        <div class="scroll__arrow center"></div>
-                    </div>
-                </div>
+                <div class="title title--xlarge title--white title--init overlay">Contact us</div>
+                    <div id="globeViz"></div>
                 <div class="container container--xsmall container--center" style="display:none">
                     <div class="title title--small title--white title--init">
                         Our Journey to Global <br /> <strong>Workforce</strong> Solutions <strong>Leadership</strong>.
@@ -371,3 +374,74 @@
         </div>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/globe.gl"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson@3"></script>
+<script>
+    const globe = Globe()(document.getElementById('globeViz'))
+      .globeImageUrl(null)
+      .backgroundColor('#000')
+      .showAtmosphere(true)
+      .atmosphereColor('purple')
+      .atmosphereAltitude(0.35)
+      .hexPolygonResolution(3)
+      .hexPolygonMargin(0.4)
+      .hexPolygonUseDots(true)
+      .hexPolygonColor(() => 'rgb(130,60,220)')
+      .hexPolygonsTransitionDuration(0)
+      .customThreeObject((d) => {
+        if (!d.isBranch) return null;
+
+        const group = new THREE.Group();
+
+        const geometry = new THREE.SphereGeometry(0.9, 8, 8);
+        const material = new THREE.MeshBasicMaterial({
+          color: 0xffffff,
+          transparent: true,
+          opacity: 0.7
+        });
+
+        const glow = new THREE.Mesh(geometry, material);
+        group.add(glow);
+
+        return group;
+      })
+      .customThreeObjectUpdate((obj, d) => {
+        if (!d.isBranch) return;
+        const { lat, lng } = d;
+        const phi = (90 - lat) * (Math.PI / 180);
+        const theta = (180 - lng) * (Math.PI / 180);
+        const radius = globe.getGlobeRadius ? globe.getGlobeRadius() : 100;
+
+        obj.position.x = radius * Math.sin(phi) * Math.cos(theta);
+        obj.position.y = radius * Math.cos(phi);
+        obj.position.z = radius * Math.sin(phi) * Math.sin(theta);
+      });
+
+    globe.controls().autoRotate = true;
+    globe.controls().autoRotateSpeed = 0.25;
+    globe.controls().enableZoom = false;
+    globe.controls().enablePan = false;
+    globe.camera().position.set(150, 100, 150);
+
+    // Load real map
+    fetch('https://unpkg.com/globe.gl/example/datasets/ne_110m_admin_0_countries.geojson')
+      .then(res => res.json())
+      .then(countries => {
+        globe.hexPolygonsData(countries.features);
+
+        // Add glow points after polygons are loaded
+        const branchLocations = [
+          { lat: 43.68738, lng: -79.60803, isBranch: true },
+          { lat: 45.49639, lng: -73.70202, isBranch: true },
+          { lat: 49.20017, lng: -122.91169, isBranch: true },
+          { lat: 29.73521, lng: -95.46272, isBranch: true },
+          { lat: 29.73514, lng: -95.46270, isBranch: true },
+          { lat: 52.66086, lng: -8.62630, isBranch: true },
+        ];
+
+        globe.objectsData(branchLocations);
+      });
+
+</script>
