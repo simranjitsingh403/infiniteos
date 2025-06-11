@@ -4,7 +4,7 @@ namespace infiniteos.Controllers
 {
     public class Industries : Controller
     {
-        public IActionResult Index()
+        public IActionResult AccoutingAndFinance()
         {
             return View();
         }
