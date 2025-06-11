@@ -1,0 +1,372 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_Dark.cshtml";
+}
+
+<!-- Circular Timeline Navigation -->
+<div class="circular-nav-container">
+    <div class="circular-path"></div>
+    <div id="indicator" class="indicator"></div>
+    <div id="circularNavItemsContainer" class="absolute w-full h-full">
+        <div class="absolute w-[500px] h-[500px]" style="left: -250px; top: 0;"></div>
+    </div>
+</div>
+
+<!-- Main Content Area with 3D Scrolling -->
+<main class="main-content">
+    <div id="scrollContainer">
+        <div id="contentWrapper">
+            <!-- Content sections now directly in HTML -->
+            <section id="year-1983" data-description="Seela Launch" class="content-section">
+                <h3 class="text-5xl font-bold mb-4 text-white">1983</h3>
+                <p class="text-xl text-gray-300 max-w-2xl leading-relaxed">
+                    Silicom France is the oldest cybersecurity consulting company in France.
+                </p>
+                <div class="mt-8 text-gray-400 text-left detail-content">
+                    <p class="text-2xl font-bold mb-4">Seela Launch</p>
+                    <p class="mt-2 text-lg leading-relaxed">
+                        Seela, the pioneering online platform that trains teams in technical and functional cybersecurity.
+                    </p>
+                    <ul class="list-disc list-inside mt-4 text-lg">
+                        <li>Key figures trained: Over 500 organizations worldwide.</li>
+                        <li>Initial course offerings: Network Security, Data Encryption, Incident Response.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="year-2019" data-description="Proph3cy (merger) funding" class="content-section">
+                <h3 class="text-5xl font-bold mb-4 text-white">2019</h3>
+                <p class="text-xl text-gray-300 max-w-2xl leading-relaxed">
+                    A significant milestone with the launch of Proph3cy, a strategic merger.
+                </p>
+                <div class="mt-8 text-gray-400 text-left detail-content">
+                    <p class="text-2xl font-bold mb-4">Proph3cy Launch - Expanding Horizons</p>
+                    <p class="mt-2 text-lg leading-relaxed">
+                        This new entity secured substantial funding, instrumental in accelerating our research and development,
+                        and enhancing our platform with cutting-edge features.
+                    </p>
+                    <ul class="list-disc list-inside mt-4 text-lg">
+                        <li>Funding secured: $X Million for expansion.</li>
+                        <li>New technologies integrated: AI-driven threat detection, blockchain security.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="year-2021" data-description="Key Partnerships Formed" class="content-section">
+                <h3 class="text-5xl font-bold mb-4 text-white">2021</h3>
+                <p class="text-xl text-gray-300 max-w-2xl leading-relaxed">
+                    Forged several key partnerships with leading technology providers and industry organizations.
+                </p>
+                <div class="mt-8 text-gray-400 text-left detail-content">
+                    <p class="text-2xl font-bold mb-4">Strategic Alliances - Strengthening Our Ecosystem</p>
+                    <p class="mt-2 text-lg leading-relaxed">
+                        These collaborations enabled us to create a more integrated and robust cybersecurity ecosystem,
+                        offering our clients a seamless and comprehensive security solution.
+                    </p>
+                    <ul class="list-disc list-inside mt-4 text-lg">
+                        <li>Major technology partners: Cloud security providers, endpoint protection vendors.</li>
+                        <li>Industry collaborations: Joint research initiatives, shared intelligence programs.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="year-2022" data-description="Global Expansion Initiated" class="content-section">
+                <h3 class="text-5xl font-bold mb-4 text-white">2022</h3>
+                <p class="text-xl text-gray-300 max-w-2xl leading-relaxed">
+                    Initiation of our ambitious global expansion strategy.
+                </p>
+                <div class="mt-8 text-gray-400 text-left detail-content">
+                    <p class="text-2xl font-bold mb-4">Global Reach - Expanding Our Footprint</p>
+                    <p class="mt-2 text-lg leading-relaxed">
+                        Successfully launched operations in several new international markets, bringing our advanced cybersecurity
+                        training and solutions to a worldwide audience.
+                    </p>
+                    <ul class="list-disc list-inside mt-4 text-lg">
+                        <li>New market entry: EMEA, APAC, LATAM regions.</li>
+                        <li>Client base growth: Achieved a 50% increase in international clients.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="year-2023" data-description="New Product Line" class="content-section">
+                <h3 class="text-5xl font-bold mb-4 text-white">2023</h3>
+                <p class="text-xl text-gray-300 max-w-2xl leading-relaxed">
+                    Introduced a revolutionary new product line addressing emerging cybersecurity challenges.
+                </p>
+                <div class="mt-8 text-gray-400 text-left detail-content">
+                    <p class="text-2xl font-bold mb-4">Product Innovation - Unveiling Our Latest Solutions</p>
+                    <p class="mt-2 text-lg leading-relaxed">
+                        This innovative suite of tools and training modules offers unparalleled protection against modern threats.
+                    </p>
+                    <ul class="list-disc list-inside mt-4 text-lg">
+                        <li>Product focus: Advanced persistent threat (APT) defense, supply chain security.</li>
+                        <li>Technological advancements: Machine learning for anomaly detection, quantum-safe encryption.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="year-2024" data-description="Sustainability Initiatives" class="content-section">
+                <h3 class="text-5xl font-bold mb-4 text-white">2024</h3>
+                <p class="text-xl text-gray-300 max-w-2xl leading-relaxed">
+                    Launched comprehensive sustainability initiatives, focusing on reducing our environmental footprint.
+                </p>
+                <div class="mt-8 text-gray-400 text-left detail-content">
+                    <p class="text-2xl font-bold mb-4">Commitment to Sustainability - A Greener Future</p>
+                    <p class="mt-2 text-lg leading-relaxed">
+                        We implemented eco-friendly practices across all our operations, contributing to a greener future.
+                    </p>
+                    <ul class="list-disc list-inside mt-4 text-lg">
+                        <li>Key initiatives: Renewable energy adoption, waste reduction programs.</li>
+                        <li>Certifications: Achieved industry-recognized environmental sustainability certifications.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="year-2025" data-description="Future Innovations" class="content-section">
+                <h3 class="text-5xl font-bold mb-4 text-white">2025</h3>
+                <p class="text-xl text-gray-300 max-w-2xl leading-relaxed">
+                    Intensely focused on pioneering the next generation of cybersecurity innovations for the future.
+                </p>
+                <div class="mt-8 text-gray-400 text-left detail-content">
+                    <p class="text-2xl font-bold mb-4">The Road Ahead - Pioneering Future Innovations</p>
+                    <p class="mt-2 text-lg leading-relaxed">
+                        Our research and development pipeline is robust, exploring technologies that will define the future of digital security.
+                    </p>
+                    <ul class="list-disc list-inside mt-4 text-lg">
+                        <li>Emerging tech focus: Generative AI for security, decentralized identity.</li>
+                        <li>Strategic vision: Anticipating and neutralizing future cyber threats.</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+</main>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    // Data for the timeline points - now populated from HTML
+    let sectionsData = [];
+
+    // Get references to DOM elements
+    const indicator = document.getElementById('indicator');
+    const circularNavItemsContainer = document.querySelector('#circularNavItemsContainer > div');
+    const circularNavContainer = document.querySelector('.circular-nav-container');
+    const circularPath = document.querySelector('.circular-path');
+
+    const scrollContainer = document.getElementById('scrollContainer');
+    const contentWrapper = document.getElementById('contentWrapper');
+    let contentSections = []; // To store references to the actual section DOM elements
+
+    let activeSectionId = ''; // Will be initialized after sectionsData is populated
+    let animationFrameId = null; // To control requestAnimationFrame
+
+    // Function to update the indicator's rotational position
+    function updateIndicatorPosition() {
+        const activeIndex = sectionsData.findIndex(s => s.id === activeSectionId);
+        if (activeIndex === -1) return;
+
+        const totalSections = sectionsData.length;
+        const startAngle = 300; // Top-right segment start (clockwise from right)
+        const endAngle = 60;   // Bottom-right segment end (clockwise from right)
+        const angleRange = (360 - startAngle) + endAngle;
+
+        const angleStep = angleRange / (totalSections - 1);
+        const targetAngle = startAngle + (activeIndex * angleStep);
+        const arcRadius = 200;
+
+        indicator.style.transform = `rotate(${targetAngle}deg) translateX(${arcRadius}px) rotate(-${targetAngle}deg)`;
+    }
+
+    // Initialize the circular navigation items and get references to 3D content sections
+    function initializeContent() {
+        // Populate sectionsData by reading from the HTML sections
+        const htmlSections = document.querySelectorAll('#contentWrapper > .content-section');
+        sectionsData = Array.from(htmlSections).map(sectionEl => {
+            const id = sectionEl.id;
+            const title = sectionEl.querySelector('h3').textContent;
+            const description = sectionEl.dataset.description || ''; // Get description from data-description attribute
+            return { id: id, title: title, description: description };
+        });
+
+        if (sectionsData.length === 0) {
+            console.warn("No content sections found in HTML.");
+            return;
+        }
+
+        activeSectionId = sectionsData[0].id; // Set initial active section
+
+        const totalSections = sectionsData.length;
+        const navStartAngle = 300;
+        const navEndAngle = 60;
+        const navAngleRange = (360 - navStartAngle) + navEndAngle;
+        const navAngleStep = navAngleRange / (totalSections - 1);
+
+        const containerCenter = 250; // Half of circular-path's 500px conceptual diameter
+        const itemArcRadius = 200; // Radius where items are placed
+
+        // Position inner circular path within the conceptual 500x500 circle
+        circularPath.style.left = `calc(250px - 200px)`;
+        circularPath.style.top = `calc(250px - 200px)`;
+        circularPath.style.width = `400px`;
+        circularPath.style.height = `400px`;
+
+        // Clear previous navigation items before recreating
+        circularNavItemsContainer.innerHTML = '';
+        contentSections = []; // Reset content sections array for dynamic population below
+
+        sectionsData.forEach((section, index) => {
+            // Create circular nav item
+            const navItem = document.createElement('div');
+            navItem.classList.add('circular-nav-item');
+            navItem.setAttribute('data-section-id', section.id);
+
+            const angle = navStartAngle + (index * navAngleStep);
+            const angleRad = (angle * Math.PI) / 180;
+            const itemWidth = 80;
+            const itemHeight = 40;
+
+            navItem.style.left = `${containerCenter + itemArcRadius * Math.cos(angleRad) - itemWidth / 2}px`;
+            navItem.style.top = `${containerCenter + itemArcRadius * Math.sin(angleRad) - itemHeight / 2}px`;
+
+            const spanTitle = document.createElement('span');
+            spanTitle.textContent = section.title;
+            navItem.appendChild(spanTitle);
+
+            navItem.addEventListener('click', () => {
+                const targetSectionElement = document.getElementById(section.id);
+                if (targetSectionElement && scrollContainer) {
+                    // Calculate scroll position to bring target section to center
+                    const sectionHeight = targetSectionElement.offsetHeight;
+                    const scrollCenter = (scrollContainer.offsetHeight / 2) - (sectionHeight / 2);
+                    const targetScrollTop = targetSectionElement.offsetTop - scrollCenter;
+
+                    scrollContainer.scrollTo({
+                        top: targetScrollTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+            circularNavItemsContainer.appendChild(navItem);
+
+            // Get reference to the existing HTML content section
+            const contentSectionEl = document.getElementById(section.id);
+            if (contentSectionEl) {
+                contentSections.push(contentSectionEl); // Store reference
+                // Set initial absolute positioning for sections
+                // This creates the "stack" where each section has its own absolute top position
+                contentSectionEl.style.top = `${index * 60}vh`; // Adjust this value to control vertical spacing
+            }
+        });
+
+        // Set the total height of contentWrapper to enable scrolling
+        // (Number of sections * vertical spacing per section) + viewport height buffer
+        // Only set height if contentWrapper has children
+        if (contentSections.length > 0) {
+             // The 'contentWrapper' is now the direct parent of sections.
+             // Its height needs to be sum of section spacing plus one viewport height to allow full scroll
+             contentWrapper.style.height = `${(sectionsData.length * 60) + (scrollContainer.offsetHeight * 0.5)}px`; // Adjusted for scrollContainer.offsetHeight
+        }
+    }
+
+    // Animation loop for 3D content scrolling
+    function animateScroll() {
+        const scrollCenter = scrollContainer.scrollTop + (scrollContainer.offsetHeight / 2);
+
+        contentSections.forEach((section, index) => {
+            const sectionRect = section.getBoundingClientRect();
+            // sectionCenter relative to the scrollContainer's top edge
+            const sectionCenter = (section.offsetTop + section.offsetHeight / 2) - scrollContainer.scrollTop;
+
+
+            // Distance from the center of the scrollContainer's viewport
+            const distance = sectionCenter - (scrollContainer.offsetHeight / 2);
+
+            // Normalizing distance relative to the viewport height (or section height)
+            // Adjust this divisor to control the animation intensity
+            const normalizedDistance = distance / (scrollContainer.offsetHeight * 0.8);
+
+            let rotateX = normalizedDistance * 45; // Max 45 degrees rotation
+            let translateY = normalizedDistance * 100; // Max 100px vertical translation
+            let scale = 1 - Math.abs(normalizedDistance * 0.3); // Scale down as it moves away
+            let opacity = 1 - Math.abs(normalizedDistance * 1.5); // Fade out faster
+            opacity = Math.max(0, Math.min(1, opacity)); // Clamp opacity between 0 and 1
+
+            // Ensure active section is not too distorted
+            if (Math.abs(normalizedDistance) < 0.2) { // Close to center
+                rotateX *= 0.5; // Less rotation near center
+                translateY *= 0.5; // Less translation near center
+                scale = 1; // Keep scale at 1
+                opacity = 1; // Keep active section fully opaque
+                section.classList.add('active');
+            } else {
+                section.classList.remove('active');
+            }
+
+            section.style.transform = `
+                translateY(${translateY}px)
+                rotateX(${rotateX}deg)
+                scale(${scale})
+            `;
+            section.style.opacity = opacity;
+        });
+
+        // Update active section in circular navigation
+        let closestSectionId = activeSectionId;
+        let minDistance = Infinity;
+
+        sectionsData.forEach(section => {
+            const el = document.getElementById(section.id);
+            if (el) {
+                const rect = el.getBoundingClientRect();
+                // Distance from center of scrollContainer viewport
+                const sectionCenterInViewport = rect.top + rect.height / 2 - scrollContainer.getBoundingClientRect().top;
+                const viewportCenter = scrollContainer.offsetHeight / 2;
+                const currentDistance = Math.abs(sectionCenterInViewport - viewportCenter);
+
+                if (currentDistance < minDistance) {
+                    minDistance = currentDistance;
+                    closestSectionId = section.id;
+                }
+            }
+        });
+
+        if (closestSectionId !== activeSectionId) {
+            const prevActiveNavItem = document.querySelector(`.circular-nav-item[data-section-id="${activeSectionId}"]`);
+            if (prevActiveNavItem) prevActiveNavItem.classList.remove('active');
+
+            const newActiveNavItem = document.querySelector(`.circular-nav-item[data-section-id="${closestSectionId}"]`);
+            if (newActiveNavItem) newActiveNavItem.classList.add('active');
+
+            activeSectionId = closestSectionId;
+            updateIndicatorPosition();
+        }
+
+        animationFrameId = requestAnimationFrame(animateScroll);
+    }
+
+    // --- Event Listeners and Initial Setup ---
+    window.addEventListener('DOMContentLoaded', () => {
+        initializeContent();
+        updateIndicatorPosition(); // Set initial indicator position
+        if (scrollContainer) {
+            // Manually trigger scroll animation once after content is initialized
+            // to set initial 3D transforms correctly for the first section
+            animateScroll();
+        }
+    });
+
+    // Start/Stop animation frame on scroll event
+    scrollContainer.addEventListener('scroll', () => {
+        if (animationFrameId) cancelAnimationFrame(animationFrameId); // Cancel previous frame
+        animationFrameId = requestAnimationFrame(animateScroll); // Request new frame
+    });
+
+    // Recalculate positions on window resize
+    window.addEventListener('resize', () => {
+        // Re-initialize content to re-position sections and re-calculate wrapper height
+        initializeContent();
+        updateIndicatorPosition();
+        // Re-run animation frame
+        if (animationFrameId) cancelAnimationFrame(animationFrameId);
+        animateScroll();
+    });
+</script>
