@@ -6,216 +6,42 @@
 <div class="main-content">
     <div class="timeline-container">
         <div class="timeline-nav-sidebar" id="timelineNavSidebar">
-            <div class="timeline-line-track" id="timelineLineTrack"></div> <div class="timeline-indicator" id="timelineIndicator"></div> <div class="timeline-year-nav" id="timelineYearNav">
-                <div class="timeline-year year-1983-nav" data-year="1983" data-section-id="section1983"><span>1983</span></div>
-                <div class="timeline-year year-2019-nav" data-year="2019" data-section-id="section2019"><span>2019</span></div>
-                <div class="timeline-year year-2021-nav" data-year="2021" data-section-id="section2021"><span>2021</span></div>
-                <div class="timeline-year year-2022-nav" data-year="2022" data-section-id="section2022"><span>2022</span></div>
-                <div class="timeline-year year-2024-nav" data-year="2024" data-section-id="section2024"><span>2024</span></div>
+            <div class="timeline-line-track" id="timelineLineTrack"></div> <div class="timeline-indicator" id="timelineIndicator"></div>
+            <div class="timeline-year-nav" id="timelineYearNav">
+                <div class="timeline-year year-1983-nav" data-year="1983" data-section-id="Challenges"><span>Challenges</span></div>
+                <div class="timeline-year year-2019-nav" data-year="2019" data-section-id="Description"><span>Description</span></div>
+                <div class="timeline-year year-2021-nav" data-year="2021" data-section-id="Benefits"><span>Benefits</span></div>
+                <div class="timeline-year year-2022-nav" data-year="2022" data-section-id="Industry-Trends"><span>Industry Trends</span></div>
             </div>
         </div>
 
         <div class="timeline-content-area">
-            <div id="section1983" class="timeline-content-section" data-year="1983">
-                <h2>1983 - Founding Vision</h2>
+            <div id="Challenges" class="timeline-content-section" data-year="1983">
+                <h2>Industry Challenges:</h2>
                 <p>The journey began in 1983 with a clear vision to revolutionize digital security. Our founders laid the groundwork for what would become a leading innovator in cybersecurity solutions, focusing on robust and scalable protection for businesses worldwide.</p>
                 <p>During this foundational period, we assembled a core team of brilliant minds, driven by a shared passion for technology and a commitment to safeguarding digital assets in an evolving landscape. Our initial focus was on developing proprietary algorithms for data encryption and secure communication protocols, establishing the bedrock of our future advancements.</p>
             </div>
 
-            <div id="section2019" class="timeline-content-section" data-year="2019">
+            <div id="Description" class="timeline-content-section" data-year="2019">
                 <h2>2019 - Seela Launch: A New Era of Training</h2>
                 <p>In 2019, we proudly launched **Seela**, a pioneering online platform dedicated to training teams in advanced technical and functional cybersecurity. Seela was developed to address the growing demand for skilled cybersecurity professionals, offering immersive and practical learning experiences.</p>
                 <p>The platform features hands-on labs, real-world scenario simulations, and expert-led modules, designed to empower organizations with the knowledge and capabilities to defend against sophisticated cyber threats. Seela quickly gained recognition for its innovative approach to talent development in the cybersecurity domain, attracting leading enterprises as clients.</p>
             </div>
 
-            <div id="section2021" class="timeline-content-section" data-year="2021">
+            <div id="Benefits" class="timeline-content-section" data-year="2021">
                 <h2>2021 - Pr0ph3cy Takes Flight: Merger & Funding Success</h2>
                 <p>The year 2021 marked a significant strategic consolidation with the launch of **Pr0ph3cy**, formed through a merger of key industry players. This strategic move expanded our market reach and capabilities, bringing together diverse expertise under a unified banner. Shortly after, Pr0ph3cy secured a substantial funding round, underscoring investor confidence in our expanded vision and market potential.</p>
                 <p>New partnerships were forged, enabling us to broaden our service offerings and integrate cutting-edge technologies. This period of rapid growth positioned Pr0ph3cy as a formidable force in the cybersecurity landscape, poised for accelerated innovation and global expansion.</p>
             </div>
 
-            <div id="section2022" class="timeline-content-section" data-year="2022">
+            <div id="Industry-Trends" class="timeline-content-section" data-year="2022">
                 <h2>2022 - Strategic Alliances & Product Enhancements</h2>
                 <p>Building on the momentum of Pr0ph3cy's launch, 2022 was characterized by the formation of crucial strategic alliances that significantly augmented our product ecosystem. These partnerships allowed us to offer more comprehensive security solutions, addressing a wider range of client needs from threat intelligence to incident response.</p>
                 <p>Simultaneously, we implemented substantial enhancements to our existing product suite, incorporating advanced AI-driven analytics and machine learning capabilities. These improvements bolstered our defense mechanisms, providing clients with superior protection against emerging cyber threats and ensuring our solutions remained at the forefront of technological innovation.</p>
             </div>
 
-            <div id="section2024" class="timeline-content-section" data-year="2024">
-                <h2>2024 - Global Footprint Expansion & New Horizons</h2>
-                <p>In 2024, our commitment to global leadership in cybersecurity was solidified through significant geographical expansion. We established new operational hubs and partnerships in key international markets, extending our reach and enabling us to better serve a diverse global client base.</p>
-                <p>This expansion was accompanied by the exploration of new technological horizons, including the initial research and development into quantum-resistant cryptography and decentralized security frameworks. These initiatives are designed to prepare our clients for the next generation of cyber challenges and ensure long-term resilience in an ever-evolving threat landscape.</p>
-            </div>
 
         </div>
     </div>
 </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const contentSections = document.querySelectorAll('.timeline-content-section');
-        const navYears = document.querySelectorAll('.timeline-year');
-        const timelineIndicator = document.getElementById('timelineIndicator');
-        const timelineNavSidebar = document.getElementById('timelineNavSidebar'); // Get sidebar element
-        const timelineLineTrack = document.getElementById('timelineLineTrack'); // Get line element
-        const mainFooter = document.getElementById('mainFooter'); // Get footer element
-
-        function updateTimeline() {
-            let currentActiveSection = null;
-            const viewportCenter = window.innerHeight / 2;
-
-            // --- Determine Active Section ---
-            contentSections.forEach(section => {
-                const rect = section.getBoundingClientRect();
-                if (rect.top <= viewportCenter && rect.bottom >= viewportCenter) {
-                    currentActiveSection = section;
-                }
-            });
-
-            // Fallback: Closest section to center
-            if (!currentActiveSection) {
-                let minDistance = Infinity;
-                contentSections.forEach(section => {
-                    const rect = section.getBoundingClientRect();
-                    const sectionCenter = rect.top + rect.height / 2;
-                    const distance = Math.abs(viewportCenter - sectionCenter);
-                    if (distance < minDistance) {
-                        minDistance = distance;
-                        currentActiveSection = section;
-                    }
-                });
-            }
-
-            // Handle very top or very bottom of scroll
-            const firstSection = contentSections[0];
-            const lastSection = contentSections[contentSections.length - 1];
-
-                    if (window.scrollY < firstSection.offsetTop - (window.innerHeight * 0.2)) {
-        currentActiveSection = firstSection;
-    } else {
-        const lastRect = lastSection.getBoundingClientRect();
-        const isLastVisible = lastRect.top <= viewportCenter && lastRect.bottom >= viewportCenter;
-
-        if (isLastVisible) {
-            currentActiveSection = lastSection;
-        }
-    }
-
-
-            // --- Update Active Classes & Indicator ---
-            contentSections.forEach(section => {
-                section.classList.remove('active');
-            });
-            navYears.forEach(year => {
-                year.classList.remove('active');
-            });
-
-            if (currentActiveSection) {
-                currentActiveSection.classList.add('active');
-                const activeYearData = currentActiveSection.dataset.year;
-                const activeNavYear = document.querySelector(`.timeline-year[data-year="${activeYearData}"]`);
-
-                if (activeNavYear) {
-                    activeNavYear.classList.add('active');
-
-                    const navYearRect = activeNavYear.getBoundingClientRect();
-                    const sidebarRect = timelineNavSidebar.getBoundingClientRect();
-
-                    const indicatorTop = (navYearRect.top - sidebarRect.top) + (navYearRect.height / 2);
-                    timelineIndicator.style.top = `${indicatorTop}px`;
-                }
-            }
-
-            // --- Handle Sidebar Height based on Footer ---
-            const footerRect = mainFooter.getBoundingClientRect();
-            const sidebarRect = timelineNavSidebar.getBoundingClientRect();
-            const scrollY = window.scrollY;
-
-            // When the footer starts to appear in the viewport (or even slightly before)
-            // We want the sidebar to shrink or "lift up" with the scroll
-            const footerThreshold = window.innerHeight; // When footer bottom is this far from viewport top
-            const footerDistanceToViewportTop = footerRect.top; // Distance of footer's top edge from viewport top
-
-            // Calculate how much sidebar should shrink
-            // If footer top is below window height, sidebar height is full.
-            // As footer top comes up (gets smaller), sidebar height shrinks.
-            let newSidebarHeight = '100vh';
-            let newLineHeight = 'calc(100% - 12rem)';
-
-            // If footer's top edge is within the viewport
-            if (footerDistanceToViewportTop < window.innerHeight) {
-                // Calculate remaining space above footer
-                // Max height should be `footerRect.top` (distance from top of viewport to footer top)
-                // We also need to consider the `top` padding of the sidebar.
-                const availableSpace = footerDistanceToViewportTop;
-                const sidebarTopPadding = parseFloat(getComputedStyle(timelineNavSidebar).paddingTop);
-                const sidebarBottomPadding = parseFloat(getComputedStyle(timelineNavSidebar).paddingBottom);
-
-                // Ensure sidebar doesn't go below its top padding or zero height
-                newSidebarHeight = Math.max(sidebarTopPadding + sidebarBottomPadding, availableSpace); // + 50 for some buffer at the bottom
-                newLineHeight = Math.max(0, availableSpace - sidebarTopPadding - sidebarBottomPadding);
-
-                // Convert to pixels for setting style directly
-                newSidebarHeight = `${newSidebarHeight}px`;
-                newLineHeight = `${newLineHeight}px`;
-
-                // Also make sure the sidebar itself doesn't start moving up if its top is above the viewport
-                if (sidebarRect.top < 0) {
-                   timelineNavSidebar.style.top = `${scrollY}px`; // Make it scroll with the content if its fixed point is no longer top of viewport
-                } else {
-                   timelineNavSidebar.style.top = '0'; // Keep it fixed at the top
-                }
-
-                        // Shrink + fade effect when footer is in view
-    const fadeThreshold = 300; // How many px above footer it starts fading
-    const disappearThreshold = 100; // Fully hidden when footer top is 100px from top
-
-    let opacity = 1;
-    let scale = 1;
-
-    if (footerDistanceToViewportTop < fadeThreshold) {
-        const fadeRatio = Math.max(0, (footerDistanceToViewportTop - disappearThreshold) / (fadeThreshold - disappearThreshold));
-        opacity = fadeRatio;
-        scale = 0.8 + (fadeRatio * 0.2); // Shrinks from 1 to 0.8
-    }
-
-    timelineNavSidebar.style.opacity = opacity;
-    timelineNavSidebar.style.transform = `scale(${scale})`;
-    timelineNavSidebar.style.transformOrigin = 'top center';
-    timelineNavSidebar.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
-            } else {
-                timelineNavSidebar.style.top = '0'; // Reset top if footer is not in view
-            }
-
-            timelineNavSidebar.style.height = newSidebarHeight;
-            timelineLineTrack.style.height = newLineHeight;
-
-            // Adjust the height of the header logo as well if it's supposed to stick with the menu
-            // However, header-logo is outside timelineNavSidebar, so it needs its own logic if it should also shrink.
-            // For now, it stays fixed.
-        }
-
-
-        // Click listener for navigation years
-        navYears.forEach(yearNav => {
-            yearNav.addEventListener('click', () => {
-                const sectionId = yearNav.dataset.sectionId;
-                const targetSection = document.getElementById(sectionId);
-                if (targetSection) {
-                    const offset = (window.innerHeight - targetSection.offsetHeight) / 2;
-                    window.scrollTo({
-                        top: targetSection.offsetTop - offset,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Event listeners
-        window.addEventListener('scroll', updateTimeline);
-        window.addEventListener('resize', updateTimeline); // Update on resize to handle layout changes
-
-        // Initial call on page load
-        updateTimeline();
-    });
-
-</script>

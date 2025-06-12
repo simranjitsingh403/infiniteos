@@ -251,7 +251,7 @@
         /* Vertical Line in the Timeline */
         .timeline-line-track {
             position: absolute;
-            left: 50%; /* Center horizontally within sidebar */
+            left: 20%; /* Center horizontally within sidebar */
             transform: translateX(-50%);
             width: 2px; /* Thickness of the line */
             height: calc(100% - 12rem); /* Line extends almost full height, adjusted for padding */
@@ -264,7 +264,7 @@
         /* Moving Indicator Dot/Line */
         .timeline-indicator {
             position: absolute;
-            left: 50%; /* Center horizontally within sidebar */
+            left: 20%; /* Center horizontally within sidebar */
             width: 8px; /* Width of the dot */
             height: 8px; /* Height of the dot */
             background-color: #8a2be2; /* Purple indicator */
@@ -287,7 +287,7 @@
 
         .timeline-year {
             position: absolute; /* Allows precise vertical positioning */
-            left: 50%; /* Start year text near the center line */
+            left: 20%; /* Start year text near the center line */
             transform: translateX(-10px); /* Push text right of the line initially */
             white-space: nowrap; /* Prevent year text from wrapping */
             cursor: pointer;
@@ -458,8 +458,8 @@
     <div class="page-wrapper">
         @RenderBody()
 
-
-        <div class="footer-container">
+        <div id="webgl_home4" class="background"></div>
+        <div class="footer-container" id="footer">
             <footer class="main-footer" id="mainFooter">
                 <canvas id="webgl-canvas"></canvas>
 
@@ -476,9 +476,9 @@
                         <p>3040 Post Oak blvd, Floor 18, Houston, TX <a href="tel:+16472475490" target="_blank" rel="noopener">+1 (647) 247-5490</a> | contact@infiniteos.com</p>
                     </div>
                     <ul id="footerBottomLinks" class="social">
-                        <li><a href="#" onclick="GoToURL('/Home/Privacy')" class="footer-links" style="width:85px;">Privacy Policy</a></li>
+                        <li><a href="#" onclick="GoToURL('/Home/Privacy')" class="footer-links" style="width:85px;color:white;">Privacy Policy</a></li>
                         <li class="text-white opacity-50 fs-14">|</li>
-                        <li><a href="#" onclick="GoToURL('/Home/Terms')" class="footer-links" style="width:120px;">Terms &amp; Conditions</a></li>
+                        <li><a href="#" onclick="GoToURL('/Home/Terms')" class="footer-links" style="width:120px;color:white;">Terms &amp; Conditions</a></li>
                     </ul>
                 </div>
             </footer>
@@ -488,6 +488,177 @@
 
 
     @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const contentSections = document.querySelectorAll('.timeline-content-section');
+            const navYears = document.querySelectorAll('.timeline-year');
+            const timelineIndicator = document.getElementById('timelineIndicator');
+            const timelineNavSidebar = document.getElementById('timelineNavSidebar'); // Get sidebar element
+            const timelineLineTrack = document.getElementById('timelineLineTrack'); // Get line element
+            const mainFooter = document.getElementById('mainFooter'); // Get footer element
+
+            function updateTimeline() {
+                let currentActiveSection = null;
+                const viewportCenter = window.innerHeight / 2;
+
+                // --- Determine Active Section ---
+                contentSections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= viewportCenter && rect.bottom >= viewportCenter) {
+                        currentActiveSection = section;
+                    }
+                });
+
+                // Fallback: Closest section to center
+                if (!currentActiveSection) {
+                    let minDistance = Infinity;
+                    contentSections.forEach(section => {
+                        const rect = section.getBoundingClientRect();
+                        const sectionCenter = rect.top + rect.height / 2;
+                        const distance = Math.abs(viewportCenter - sectionCenter);
+                        if (distance < minDistance) {
+                            minDistance = distance;
+                            currentActiveSection = section;
+                        }
+                    });
+                }
+
+                // Handle very top or very bottom of scroll
+                const firstSection = contentSections[0];
+                const lastSection = contentSections[contentSections.length - 1];
+
+                        if (window.scrollY < firstSection.offsetTop - (window.innerHeight * 0.2)) {
+            currentActiveSection = firstSection;
+        } else {
+            const lastRect = lastSection.getBoundingClientRect();
+            const isLastVisible = lastRect.top <= viewportCenter && lastRect.bottom >= viewportCenter;
+
+            if (isLastVisible) {
+                currentActiveSection = lastSection;
+            }
+        }
+
+
+                // --- Update Active Classes & Indicator ---
+                contentSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                navYears.forEach(year => {
+                    year.classList.remove('active');
+                });
+
+                if (currentActiveSection) {
+                    currentActiveSection.classList.add('active');
+                    const activeYearData = currentActiveSection.dataset.year;
+                    const activeNavYear = document.querySelector(`.timeline-year[data-year="${activeYearData}"]`);
+
+                    if (activeNavYear) {
+                        activeNavYear.classList.add('active');
+
+                        const navYearRect = activeNavYear.getBoundingClientRect();
+                        const sidebarRect = timelineNavSidebar.getBoundingClientRect();
+
+                        const indicatorTop = (navYearRect.top - sidebarRect.top) + (navYearRect.height / 2);
+                        timelineIndicator.style.top = `${indicatorTop}px`;
+                    }
+                }
+
+                // --- Handle Sidebar Height based on Footer ---
+                const footerRect = mainFooter.getBoundingClientRect();
+                const sidebarRect = timelineNavSidebar.getBoundingClientRect();
+                const scrollY = window.scrollY;
+
+                // When the footer starts to appear in the viewport (or even slightly before)
+                // We want the sidebar to shrink or "lift up" with the scroll
+                const footerThreshold = window.innerHeight; // When footer bottom is this far from viewport top
+                const footerDistanceToViewportTop = footerRect.top; // Distance of footer's top edge from viewport top
+
+                // Calculate how much sidebar should shrink
+                // If footer top is below window height, sidebar height is full.
+                // As footer top comes up (gets smaller), sidebar height shrinks.
+                let newSidebarHeight = '100vh';
+                let newLineHeight = 'calc(100% - 12rem)';
+
+                // If footer's top edge is within the viewport
+                if (footerDistanceToViewportTop < window.innerHeight) {
+                    // Calculate remaining space above footer
+                    // Max height should be `footerRect.top` (distance from top of viewport to footer top)
+                    // We also need to consider the `top` padding of the sidebar.
+                    const availableSpace = footerDistanceToViewportTop;
+                    const sidebarTopPadding = parseFloat(getComputedStyle(timelineNavSidebar).paddingTop);
+                    const sidebarBottomPadding = parseFloat(getComputedStyle(timelineNavSidebar).paddingBottom);
+
+                    // Ensure sidebar doesn't go below its top padding or zero height
+                    newSidebarHeight = Math.max(sidebarTopPadding + sidebarBottomPadding, availableSpace); // + 50 for some buffer at the bottom
+                    newLineHeight = Math.max(0, availableSpace - sidebarTopPadding - sidebarBottomPadding);
+
+                    // Convert to pixels for setting style directly
+                    newSidebarHeight = `${newSidebarHeight}px`;
+                    newLineHeight = `${newLineHeight}px`;
+
+                    // Also make sure the sidebar itself doesn't start moving up if its top is above the viewport
+                    if (sidebarRect.top < 0) {
+                       timelineNavSidebar.style.top = `${scrollY}px`; // Make it scroll with the content if its fixed point is no longer top of viewport
+                    } else {
+                       timelineNavSidebar.style.top = '0'; // Keep it fixed at the top
+                    }
+
+                            // Shrink + fade effect when footer is in view
+        const fadeThreshold = 300; // How many px above footer it starts fading
+        const disappearThreshold = 100; // Fully hidden when footer top is 100px from top
+
+        let opacity = 1;
+        let scale = 1;
+
+        if (footerDistanceToViewportTop < fadeThreshold) {
+            const fadeRatio = Math.max(0, (footerDistanceToViewportTop - disappearThreshold) / (fadeThreshold - disappearThreshold));
+            opacity = fadeRatio;
+            scale = 0.8 + (fadeRatio * 0.2); // Shrinks from 1 to 0.8
+        }
+
+        timelineNavSidebar.style.opacity = opacity;
+        timelineNavSidebar.style.transform = `scale(${scale})`;
+        timelineNavSidebar.style.transformOrigin = 'top center';
+        timelineNavSidebar.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+                } else {
+                    timelineNavSidebar.style.top = '0'; // Reset top if footer is not in view
+                }
+
+                timelineNavSidebar.style.height = newSidebarHeight;
+                timelineLineTrack.style.height = newLineHeight;
+
+                // Adjust the height of the header logo as well if it's supposed to stick with the menu
+                // However, header-logo is outside timelineNavSidebar, so it needs its own logic if it should also shrink.
+                // For now, it stays fixed.
+            }
+
+
+            // Click listener for navigation years
+            navYears.forEach(yearNav => {
+                yearNav.addEventListener('click', () => {
+                    const sectionId = yearNav.dataset.sectionId;
+                    const targetSection = document.getElementById(sectionId);
+                    if (targetSection) {
+                        const offset = (window.innerHeight - targetSection.offsetHeight) / 2;
+                        window.scrollTo({
+                            top: targetSection.offsetTop - offset,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Event listeners
+            window.addEventListener('scroll', updateTimeline);
+            window.addEventListener('resize', updateTimeline); // Update on resize to handle layout changes
+
+            // Initial call on page load
+            updateTimeline();
+        });
+
+    </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="~/js/site.js"></script>
 </body>
 </html>
