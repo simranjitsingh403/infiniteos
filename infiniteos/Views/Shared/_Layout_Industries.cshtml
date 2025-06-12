@@ -212,7 +212,6 @@
         .timeline-container {
             display: flex;
             /* min-height: 150vh; REMOVED: Will be handled by content sections + footer */
-            padding-top: 4rem; /* Space for top logo/header if any */
             padding-bottom: 8rem; /* Space for bottom scroll, before footer */
             min-height: calc(100vh + 800px); /* Ensure initial scrollability, adjust as needed */
         }
@@ -224,7 +223,7 @@
             top: 0;
             height: 100vh; /* Default height */
             width: 250px; /* Width of the sidebar */
-            display: flex;
+            display: none;
             flex-direction: column;
             justify-content: center; /* Vertically center the timeline years */
             align-items: center;
@@ -452,6 +451,88 @@
         .third-section {
             flex: 0 0 22%; /* Fixed 25% width */
         }
+
+        .text-left {
+            position: absolute;
+            top: 37%;
+            text-align: left;
+            width: 500px;
+            padding-right: 20px; /* Add some padding to the right of the text */
+        }
+
+            .text-left h1 {
+                font-size: 4em; /* Adjust as needed for the large heading */
+                font-weight: 600; /* Looks bold in the image */
+                line-height: 1.1;
+                margin: 0; /* Remove default margin */
+                color: #fff;
+            }
+
+        .video-background {
+            position: relative; /* Fixes the video to the viewport */
+            top: 0;
+            left: 21%;
+            width: 60%;
+            height: 100%;
+            z-index: -1; /* Puts the video behind other content */
+            overflow: hidden; /* Hide any overflow if the video aspect ratio doesn't match perfectly */
+        }
+
+        .responsive-video {
+            width: 50%; /* reduce width */
+            height: auto; /* maintain aspect ratio */
+            max-width: 100%;
+            display: block;
+            margin: auto;
+        }
+
+        .video-background video {
+            min-width: 100%; /* Ensure video covers at least 100% width */
+            min-height: 100%; /* Ensure video covers at least 100% height */
+            width: auto; /* Allow auto width to maintain aspect ratio */
+            height: auto; /* Allow auto height to maintain aspect ratio */
+            position: absolute; /* Position video within its fixed parent */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Center the video */
+            object-fit: cover; /* Ensures the video covers the entire area, cropping as needed */
+            filter: brightness(0.7); /* Optional: Make the video a bit darker for better text readability */
+        }
+
+        /* Optional: Video Overlay */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Semi-transparent black overlay */
+            z-index: 0; /* Stays above the video but below content */
+        }
+
+        .text-overlay-right {
+            position: absolute; /* Positioned absolutely within .hero-section */
+            right: 0%;
+            top: 50%; /* Adjust vertical position */
+            transform: translateY(-50%); /* Center vertically relative to its top */
+            width: 500px; /* Max width for the paragraph text */
+            background-color: transparent; /* No background, just text */
+            padding: 20px;
+            box-sizing: border-box;
+            z-index: 2; /* Ensure it's above the image */
+            text-align: left; /* Align text to the left */
+        }
+
+            .text-overlay-right p {
+                font-size: 1.1em; /* Adjust font size */
+                color: #ccc; /* Slightly greyed out for readability */
+                line-height: 1.5;
+                margin: 0;
+            }
+
+        ._heroWrapper_1b5c0_23:after {
+            width: 0;
+        }
     </style>
 
 </head>
@@ -635,7 +716,18 @@
                 // For now, it stays fixed.
             }
 
+                    const secondSection = document.querySelector('.second-section');
 
+        function toggleSidebarVisibility() {
+                    const rect = secondSection.getBoundingClientRect();
+        const inViewOrBelow = rect.top <= 155 && rect.bottom > 0;
+
+        if (inViewOrBelow || window.scrollY >= secondSection.offsetTop) {
+            timelineNavSidebar.style.display = 'block';
+        } else {
+            timelineNavSidebar.style.display = 'none';
+        }
+        }
             // Click listener for navigation years
             navYears.forEach(yearNav => {
                 yearNav.addEventListener('click', () => {
@@ -652,11 +744,19 @@
             });
 
             // Event listeners
-            window.addEventListener('scroll', updateTimeline);
-            window.addEventListener('resize', updateTimeline); // Update on resize to handle layout changes
+                    window.addEventListener('scroll', () => {
+            updateTimeline();
+            toggleSidebarVisibility();
+        });
+
+        window.addEventListener('resize', () => {
+            updateTimeline();
+            toggleSidebarVisibility();
+        }); // Update on resize to handle layout changes
 
             // Initial call on page load
             updateTimeline();
+            toggleSidebarVisibility();
         });
 
     </script>
