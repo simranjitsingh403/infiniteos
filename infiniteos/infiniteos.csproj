@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\videos\hero\" />
     <Folder Include="wwwroot\videos\usecases\" />
   </ItemGroup>
 
