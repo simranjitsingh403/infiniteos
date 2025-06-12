@@ -334,12 +334,6 @@
 
         /* Right Content Area */
         .timeline-content-area {
-            margin-left: 250px; /* Offset by sidebar width */
-            flex-grow: 1;
-            padding: 2rem 4rem;
-            box-sizing: border-box;
-            max-width: 800px; /* Max width for readability */
-            margin-right: auto; /* Center content within remaining space */
         }
 
         .timeline-content-section {
@@ -448,6 +442,15 @@
                 width: 100%; /* Stack columns on small screens */
                 min-width: unset;
             }
+        }
+
+        .second-section {
+            flex: 0 0 63%; /* Fixed 50% width */
+            padding: 0 4%;
+        }
+
+        .third-section {
+            flex: 0 0 22%; /* Fixed 25% width */
         }
     </style>
 
