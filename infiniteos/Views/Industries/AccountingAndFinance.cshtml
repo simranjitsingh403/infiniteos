@@ -1,372 +1,558 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout_Dark.cshtml";
+    Layout = null;
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta name="google" content="notranslate">
+    <meta charset="UTF-8">
+    <title>Infinite Outsourcing System</title>
+    <link href="~/favicon.ico" rel="shortcut icon">
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/css/web-i13hnk8_.css" rel="stylesheet" />
+    <link href="~/css/contactus/contactoffices-d6pf6t9t.css" rel="stylesheet" />
+    <link href="~/css/Custom-header.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a1a1a; /* Dark background */
+            color: #ffffff;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth; /* For smooth scrolling when clicking years */
+        }
 
-<!-- Circular Timeline Navigation -->
-<div class="circular-nav-container">
-    <div class="circular-path"></div>
-    <div id="indicator" class="indicator"></div>
-    <div id="circularNavItemsContainer" class="absolute w-full h-full">
-        <div class="absolute w-[500px] h-[500px]" style="left: -250px; top: 0;"></div>
-    </div>
-</div>
+        /* Main container for the whole layout */
+        .timeline-container {
+            display: flex;
+            /* min-height: 150vh; REMOVED: Will be handled by content sections + footer */
+            padding-top: 4rem; /* Space for top logo/header if any */
+            padding-bottom: 8rem; /* Space for bottom scroll, before footer */
+            min-height: calc(100vh + 800px); /* Ensure initial scrollability, adjust as needed */
+        }
 
-<!-- Main Content Area with 3D Scrolling -->
-<main class="main-content">
-    <div id="scrollContainer">
-        <div id="contentWrapper">
-            <!-- Content sections now directly in HTML -->
-            <section id="year-1983" data-description="Seela Launch" class="content-section">
-                <h3 class="text-5xl font-bold mb-4 text-white">1983</h3>
-                <p class="text-xl text-gray-300 max-w-2xl leading-relaxed">
-                    Silicom France is the oldest cybersecurity consulting company in France.
-                </p>
-                <div class="mt-8 text-gray-400 text-left detail-content">
-                    <p class="text-2xl font-bold mb-4">Seela Launch</p>
-                    <p class="mt-2 text-lg leading-relaxed">
-                        Seela, the pioneering online platform that trains teams in technical and functional cybersecurity.
-                    </p>
-                    <ul class="list-disc list-inside mt-4 text-lg">
-                        <li>Key figures trained: Over 500 organizations worldwide.</li>
-                        <li>Initial course offerings: Network Security, Data Encryption, Incident Response.</li>
-                    </ul>
-                </div>
-            </section>
+        /* Fixed Left Sidebar (Timeline Navigation) */
+        .timeline-nav-sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh; /* Default height */
+            width: 250px; /* Width of the sidebar */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Vertically center the timeline years */
+            align-items: center;
+            padding-top: 6rem; /* Adjust for top logo/header space */
+            padding-bottom: 6rem;
+            box-sizing: border-box;
+            background-color: transparent; /* Or a subtle background if needed */
+            z-index: 1000;
+            transition: height 0.3s ease-out; /* Smooth transition for height change */
+            overflow: hidden; /* Hide content when shrinking */
+        }
 
-            <section id="year-2019" data-description="Proph3cy (merger) funding" class="content-section">
-                <h3 class="text-5xl font-bold mb-4 text-white">2019</h3>
-                <p class="text-xl text-gray-300 max-w-2xl leading-relaxed">
-                    A significant milestone with the launch of Proph3cy, a strategic merger.
-                </p>
-                <div class="mt-8 text-gray-400 text-left detail-content">
-                    <p class="text-2xl font-bold mb-4">Proph3cy Launch - Expanding Horizons</p>
-                    <p class="mt-2 text-lg leading-relaxed">
-                        This new entity secured substantial funding, instrumental in accelerating our research and development,
-                        and enhancing our platform with cutting-edge features.
-                    </p>
-                    <ul class="list-disc list-inside mt-4 text-lg">
-                        <li>Funding secured: $X Million for expansion.</li>
-                        <li>New technologies integrated: AI-driven threat detection, blockchain security.</li>
-                    </ul>
-                </div>
-            </section>
+        /* Logo/Star at the very top-left */
+        .header-logo {
+            position: fixed;
+            top: 2.5rem; /* Distance from top */
+            left: 2.5rem; /* Distance from left */
+            font-size: 2.5rem;
+            color: #8a2be2; /* Purple */
+            font-weight: 800;
+            z-index: 1001;
+        }
 
-            <section id="year-2021" data-description="Key Partnerships Formed" class="content-section">
-                <h3 class="text-5xl font-bold mb-4 text-white">2021</h3>
-                <p class="text-xl text-gray-300 max-w-2xl leading-relaxed">
-                    Forged several key partnerships with leading technology providers and industry organizations.
-                </p>
-                <div class="mt-8 text-gray-400 text-left detail-content">
-                    <p class="text-2xl font-bold mb-4">Strategic Alliances - Strengthening Our Ecosystem</p>
-                    <p class="mt-2 text-lg leading-relaxed">
-                        These collaborations enabled us to create a more integrated and robust cybersecurity ecosystem,
-                        offering our clients a seamless and comprehensive security solution.
-                    </p>
-                    <ul class="list-disc list-inside mt-4 text-lg">
-                        <li>Major technology partners: Cloud security providers, endpoint protection vendors.</li>
-                        <li>Industry collaborations: Joint research initiatives, shared intelligence programs.</li>
-                    </ul>
-                </div>
-            </section>
+        /* Vertical Line in the Timeline */
+        .timeline-line-track {
+            position: absolute;
+            left: 50%; /* Center horizontally within sidebar */
+            transform: translateX(-50%);
+            width: 2px; /* Thickness of the line */
+            height: calc(100% - 12rem); /* Line extends almost full height, adjusted for padding */
+            background-color: rgba(255, 255, 255, 0.1); /* Faded line color */
+            border-radius: 1px;
+            /* Add transition for smooth shrinking */
+            transition: height 0.3s ease-out;
+        }
 
-            <section id="year-2022" data-description="Global Expansion Initiated" class="content-section">
-                <h3 class="text-5xl font-bold mb-4 text-white">2022</h3>
-                <p class="text-xl text-gray-300 max-w-2xl leading-relaxed">
-                    Initiation of our ambitious global expansion strategy.
-                </p>
-                <div class="mt-8 text-gray-400 text-left detail-content">
-                    <p class="text-2xl font-bold mb-4">Global Reach - Expanding Our Footprint</p>
-                    <p class="mt-2 text-lg leading-relaxed">
-                        Successfully launched operations in several new international markets, bringing our advanced cybersecurity
-                        training and solutions to a worldwide audience.
-                    </p>
-                    <ul class="list-disc list-inside mt-4 text-lg">
-                        <li>New market entry: EMEA, APAC, LATAM regions.</li>
-                        <li>Client base growth: Achieved a 50% increase in international clients.</li>
-                    </ul>
-                </div>
-            </section>
+        /* Moving Indicator Dot/Line */
+        .timeline-indicator {
+            position: absolute;
+            left: 50%; /* Center horizontally within sidebar */
+            width: 8px; /* Width of the dot */
+            height: 8px; /* Height of the dot */
+            background-color: #8a2be2; /* Purple indicator */
+            border-radius: 50%; /* Makes it a dot */
+            transform: translate(-50%, -50%); /* Centers the dot precisely */
+            transition: top 0.3s ease-out; /* Smooth movement */
+            z-index: 1002; /* Above the line */
+        }
 
-            <section id="year-2023" data-description="New Product Line" class="content-section">
-                <h3 class="text-5xl font-bold mb-4 text-white">2023</h3>
-                <p class="text-xl text-gray-300 max-w-2xl leading-relaxed">
-                    Introduced a revolutionary new product line addressing emerging cybersecurity challenges.
-                </p>
-                <div class="mt-8 text-gray-400 text-left detail-content">
-                    <p class="text-2xl font-bold mb-4">Product Innovation - Unveiling Our Latest Solutions</p>
-                    <p class="mt-2 text-lg leading-relaxed">
-                        This innovative suite of tools and training modules offers unparalleled protection against modern threats.
-                    </p>
-                    <ul class="list-disc list-inside mt-4 text-lg">
-                        <li>Product focus: Advanced persistent threat (APT) defense, supply chain security.</li>
-                        <li>Technological advancements: Machine learning for anomaly detection, quantum-safe encryption.</li>
-                    </ul>
-                </div>
-            </section>
+        /* Timeline Years (Navigation Items) */
+        .timeline-year-nav {
+            position: relative; /* For absolute positioning of years */
+            width: 100%; /* Take full width of sidebar for alignment */
+            height: 100%; /* Fill available space */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around; /* Distribute years evenly */
+            align-items: flex-start; /* Align text to the left */
+        }
 
-            <section id="year-2024" data-description="Sustainability Initiatives" class="content-section">
-                <h3 class="text-5xl font-bold mb-4 text-white">2024</h3>
-                <p class="text-xl text-gray-300 max-w-2xl leading-relaxed">
-                    Launched comprehensive sustainability initiatives, focusing on reducing our environmental footprint.
-                </p>
-                <div class="mt-8 text-gray-400 text-left detail-content">
-                    <p class="text-2xl font-bold mb-4">Commitment to Sustainability - A Greener Future</p>
-                    <p class="mt-2 text-lg leading-relaxed">
-                        We implemented eco-friendly practices across all our operations, contributing to a greener future.
-                    </p>
-                    <ul class="list-disc list-inside mt-4 text-lg">
-                        <li>Key initiatives: Renewable energy adoption, waste reduction programs.</li>
-                        <li>Certifications: Achieved industry-recognized environmental sustainability certifications.</li>
-                    </ul>
-                </div>
-            </section>
+        .timeline-year {
+            position: absolute; /* Allows precise vertical positioning */
+            left: 50%; /* Start year text near the center line */
+            transform: translateX(-10px); /* Push text right of the line initially */
+            white-space: nowrap; /* Prevent year text from wrapping */
+            cursor: pointer;
+            text-align: left;
+            padding-left: 1rem; /* Space between line and text */
+            transition: color 0.3s ease, font-size 0.3s ease, transform 0.3s ease;
+        }
 
-            <section id="year-2025" data-description="Future Innovations" class="content-section">
-                <h3 class="text-5xl font-bold mb-4 text-white">2025</h3>
-                <p class="text-xl text-gray-300 max-w-2xl leading-relaxed">
-                    Intensely focused on pioneering the next generation of cybersecurity innovations for the future.
-                </p>
-                <div class="mt-8 text-gray-400 text-left detail-content">
-                    <p class="text-2xl font-bold mb-4">The Road Ahead - Pioneering Future Innovations</p>
-                    <p class="mt-2 text-lg leading-relaxed">
-                        Our research and development pipeline is robust, exploring technologies that will define the future of digital security.
-                    </p>
-                    <ul class="list-disc list-inside mt-4 text-lg">
-                        <li>Emerging tech focus: Generative AI for security, decentralized identity.</li>
-                        <li>Strategic vision: Anticipating and neutralizing future cyber threats.</li>
-                    </ul>
-                </div>
-            </section>
+        .timeline-year span {
+            display: block; /* Make year text take full width */
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .timeline-year.active span {
+            color: #ffffff;
+            font-size: 1.4rem;
+            font-weight: 700;
+            transform: translateX(10px); /* Move active year further right */
+        }
+
+        /* Custom year positions (adjust as needed based on content sections) */
+        .year-1983-nav { top: 10%; }
+        .year-2019-nav { top: 30%; }
+        .year-2021-nav { top: 50%; }
+        .year-2022-nav { top: 70%; }
+        .year-2024-nav { top: 90%; }
+
+
+        /* Right Content Area */
+        .timeline-content-area {
+            margin-left: 250px; /* Offset by sidebar width */
+            flex-grow: 1;
+            padding: 2rem 4rem;
+            box-sizing: border-box;
+            max-width: 800px; /* Max width for readability */
+            margin-right: auto; /* Center content within remaining space */
+        }
+
+        .timeline-content-section {
+            min-height: 80vh; /* Each section should be tall enough to scroll */
+            margin-bottom: 6rem; /* Space between sections */
+            padding-left: 2.5rem; /* Space for the vertical line if desired on content side */
+            border-left: 2px solid rgba(255, 255, 255, 0.1); /* Subtle content border line */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Vertically center content in section */
+            opacity: 0.5; /* Faded when not active */
+            transition: opacity 0.4s ease;
+        }
+
+        .timeline-content-section.active {
+            opacity: 1; /* Fully visible when active */
+        }
+
+        .timeline-content-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .timeline-content-section p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #ccc;
+        }
+
+        /* Footer Section */
+        .main-footer {
+            background-color: #0d0d0d; /* Even darker background for footer */
+            color: #b0b0b0;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05); /* Subtle top border */
+            margin-top: 5rem; /* Space above the footer */
+            padding-left: 280px; /* Ensure footer content starts after the sidebar */
+        }
+
+        .footer-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 2rem;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px; /* Minimum width for columns before wrapping */
+            text-align: left;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-column ul li a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: #8a2be2; /* Purple hover effect */
+        }
+
+        .footer-bottom-text {
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+
+        /* Responsive Adjustments */
+        @@media (max-width: 768px) {
+            .timeline-container {
+                flex-direction: column; /* Stack content vertically */
+                padding-top: 1rem;
+            }
+
+            .timeline-nav-sidebar {
+                position: relative; /* No longer fixed */
+                width: 100%;
+                height: auto; /* Height adapts to content */
+                flex-direction: row; /* Years side-by-side */
+                justify-content: space-around;
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+                background-color: #222; /* Add a background to the nav bar */
+                overflow-x: auto; /* Allow horizontal scrolling for years if many */
+                -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+            }
+
+            .header-logo {
+                position: relative; /* No longer fixed */
+                top: auto;
+                left: auto;
+                text-align: center;
+                margin-bottom: 1rem;
+                display: block;
+                width: 100%;
+            }
+
+            .timeline-line-track, .timeline-indicator {
+                display: none; /* Hide vertical line and dot on mobile */
+            }
+
+            .timeline-year-nav {
+                flex-direction: row; /* Years in a row */
+                height: auto;
+                padding: 0 1rem;
+            }
+
+            .timeline-year {
+                position: relative; /* Reset positioning */
+                left: auto;
+                transform: translateX(0);
+                padding: 0 0.5rem; /* Adjust padding for horizontal layout */
+            }
+
+            .timeline-year span {
+                font-size: 0.9rem;
+            }
+
+            .timeline-year.active span {
+                font-size: 1.1rem;
+                transform: translateX(0);
+            }
+
+            .timeline-content-area {
+                margin-left: 0; /* Remove left margin */
+                padding: 2rem 1rem;
+            }
+
+            .timeline-content-section {
+                min-height: 60vh; /* Shorter sections on mobile */
+                margin-bottom: 3rem;
+            }
+
+            .main-footer {
+                padding-left: 1rem; /* Remove left offset on mobile */
+                padding-right: 1rem;
+            }
+
+            .footer-column {
+                text-align: center;
+                width: 100%; /* Stack columns on small screens */
+                min-width: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+    @Html.Partial("_MenuBar")
+
+    <div class="timeline-container">
+        <div class="timeline-nav-sidebar" id="timelineNavSidebar">
+            <div class="timeline-line-track" id="timelineLineTrack"></div> <div class="timeline-indicator" id="timelineIndicator"></div> <div class="timeline-year-nav" id="timelineYearNav">
+                <div class="timeline-year year-1983-nav" data-year="1983" data-section-id="section1983"><span>1983</span></div>
+                <div class="timeline-year year-2019-nav" data-year="2019" data-section-id="section2019"><span>2019</span></div>
+                <div class="timeline-year year-2021-nav" data-year="2021" data-section-id="section2021"><span>2021</span></div>
+                <div class="timeline-year year-2022-nav" data-year="2022" data-section-id="section2022"><span>2022</span></div>
+                <div class="timeline-year year-2024-nav" data-year="2024" data-section-id="section2024"><span>2024</span></div>
+            </div>
+        </div>
+
+        <div class="timeline-content-area">
+            <div id="section1983" class="timeline-content-section" data-year="1983">
+                <h2>1983 - Founding Vision</h2>
+                <p>The journey began in 1983 with a clear vision to revolutionize digital security. Our founders laid the groundwork for what would become a leading innovator in cybersecurity solutions, focusing on robust and scalable protection for businesses worldwide.</p>
+                <p>During this foundational period, we assembled a core team of brilliant minds, driven by a shared passion for technology and a commitment to safeguarding digital assets in an evolving landscape. Our initial focus was on developing proprietary algorithms for data encryption and secure communication protocols, establishing the bedrock of our future advancements.</p>
+            </div>
+
+            <div id="section2019" class="timeline-content-section" data-year="2019">
+                <h2>2019 - Seela Launch: A New Era of Training</h2>
+                <p>In 2019, we proudly launched **Seela**, a pioneering online platform dedicated to training teams in advanced technical and functional cybersecurity. Seela was developed to address the growing demand for skilled cybersecurity professionals, offering immersive and practical learning experiences.</p>
+                <p>The platform features hands-on labs, real-world scenario simulations, and expert-led modules, designed to empower organizations with the knowledge and capabilities to defend against sophisticated cyber threats. Seela quickly gained recognition for its innovative approach to talent development in the cybersecurity domain, attracting leading enterprises as clients.</p>
+            </div>
+
+            <div id="section2021" class="timeline-content-section" data-year="2021">
+                <h2>2021 - Pr0ph3cy Takes Flight: Merger & Funding Success</h2>
+                <p>The year 2021 marked a significant strategic consolidation with the launch of **Pr0ph3cy**, formed through a merger of key industry players. This strategic move expanded our market reach and capabilities, bringing together diverse expertise under a unified banner. Shortly after, Pr0ph3cy secured a substantial funding round, underscoring investor confidence in our expanded vision and market potential.</p>
+                <p>New partnerships were forged, enabling us to broaden our service offerings and integrate cutting-edge technologies. This period of rapid growth positioned Pr0ph3cy as a formidable force in the cybersecurity landscape, poised for accelerated innovation and global expansion.</p>
+            </div>
+
+            <div id="section2022" class="timeline-content-section" data-year="2022">
+                <h2>2022 - Strategic Alliances & Product Enhancements</h2>
+                <p>Building on the momentum of Pr0ph3cy's launch, 2022 was characterized by the formation of crucial strategic alliances that significantly augmented our product ecosystem. These partnerships allowed us to offer more comprehensive security solutions, addressing a wider range of client needs from threat intelligence to incident response.</p>
+                <p>Simultaneously, we implemented substantial enhancements to our existing product suite, incorporating advanced AI-driven analytics and machine learning capabilities. These improvements bolstered our defense mechanisms, providing clients with superior protection against emerging cyber threats and ensuring our solutions remained at the forefront of technological innovation.</p>
+            </div>
+
+            <div id="section2024" class="timeline-content-section" data-year="2024">
+                <h2>2024 - Global Footprint Expansion & New Horizons</h2>
+                <p>In 2024, our commitment to global leadership in cybersecurity was solidified through significant geographical expansion. We established new operational hubs and partnerships in key international markets, extending our reach and enabling us to better serve a diverse global client base.</p>
+                <p>This expansion was accompanied by the exploration of new technological horizons, including the initial research and development into quantum-resistant cryptography and decentralized security frameworks. These initiatives are designed to prepare our clients for the next generation of cyber challenges and ensure long-term resilience in an ever-evolving threat landscape.</p>
+            </div>
+
         </div>
     </div>
-</main>
 
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-    // Data for the timeline points - now populated from HTML
-    let sectionsData = [];
+        <footer class="main-footer" id="mainFooter">
+            <canvas id="webgl-canvas"></canvas>
+            <div class="footer-content container container--small container--center">
+                <div class="text center" data-desktop>
+                    <div class="supertitle supertitle--white">
+                        Infinite Outsourcing.<br />
+                        Unlimited Growth.
+                    </div>
+                    <div class="wysiwyg wysiwyg--large" data-desktop>
+                        <p>3040 Post Oak blvd, Floor 18, Houston, TX <a href="tel:+16472475490" target="_blank" rel="noopener">+1 (647) 247-5490</a> | contact@infiniteos.com</p>
+                    </div>
+                </div>
+                <div class="supertitle supertitle--white title--init" data-mobile>
+                    Be in<br />
+                    Touch.<br />
+                    Be<br />
+                    data<br />
+                    driven.
+                </div>
+                <div class="wysiwyg wysiwyg--large" data-mobile>
+                    TheCUBE Madrid,<br />
+                    C/ Rufino González 25 28037,<br />
+                    Madrid – España.<br />
+                    <a href="tel:+34673842174" target="_blank" rel="noopener">+1 (647) 247-5490</a> | <a href="/cdn-cgi/l/email-protection#066f686069466b6f69726f286375" target="_blank" rel="noopener"><span class="__cf_email__" data-cfemail="4821262e27082521273c21662d3b">[email&#160;protected]</span></a>
+                </div>
+                <div class="info">
+                    @*   <ul class="social">
+                    <li><a href="https://www.instagram.com/mymioti/?hl=es" aria-label="" class="instagram" target="_blank"></a></li>
+                    <li><a href="https://www.linkedin.com/school/mioti/?originalSubdomain=es" aria-label="" class="linkedin" target="_blank"></a></li>
+                    <li><a href="https://www.youtube.com/channel/UClSC9kef8m9x8c4C6RPrCog" aria-label="" class="youtube" target="_blank"></a></li>
+                    <li><a href="https://www.facebook.com/myMIOTI/" aria-label="" class="facebook" target="_blank"></a></li>
+                </ul> *@
+                    @* <ul id="menu-legal" class="legal" style="opacity: 0.9979;">
+                                            <li id="menu-item-314" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-314"><a href="https://mioticonsulting.dgrees.studio/aviso-legal/">Aviso legal</a></li>
+                                            <li id="menu-item-312" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-312"><a href="https://mioticonsulting.dgrees.studio/politica-de-privacidad/">Política de Privacidad</a></li>
+                                            <li id="menu-item-313" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-313"><a href="https://mioticonsulting.dgrees.studio/politica-de-cookies/">Política de Cookies</a></li>
+                                        </ul> *@
+                    <ul class="social">
+                        <li><a href="#" onclick="GoToURL('/Home/Privacy')" class="footer-links" style="width:85px;">Privacy Policy</a></li>
+                        <li class="text-white opacity-50 fs-14">|</li>
+                        <li><a href="#" onclick="GoToURL('/Home/Terms')" class="footer-links" style="width:120px;">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
 
-    // Get references to DOM elements
-    const indicator = document.getElementById('indicator');
-    const circularNavItemsContainer = document.querySelector('#circularNavItemsContainer > div');
-    const circularNavContainer = document.querySelector('.circular-nav-container');
-    const circularPath = document.querySelector('.circular-path');
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const contentSections = document.querySelectorAll('.timeline-content-section');
+            const navYears = document.querySelectorAll('.timeline-year');
+            const timelineIndicator = document.getElementById('timelineIndicator');
+            const timelineNavSidebar = document.getElementById('timelineNavSidebar'); // Get sidebar element
+            const timelineLineTrack = document.getElementById('timelineLineTrack'); // Get line element
+            const mainFooter = document.getElementById('mainFooter'); // Get footer element
 
-    const scrollContainer = document.getElementById('scrollContainer');
-    const contentWrapper = document.getElementById('contentWrapper');
-    let contentSections = []; // To store references to the actual section DOM elements
+            const initialSidebarHeight = '100vh'; // Store initial height
+            const initialLineHeight = 'calc(100% - 12rem)'; // Store initial line height
 
-    let activeSectionId = ''; // Will be initialized after sectionsData is populated
-    let animationFrameId = null; // To control requestAnimationFrame
+            function updateTimeline() {
+                let currentActiveSection = null;
+                const viewportCenter = window.innerHeight / 2;
 
-    // Function to update the indicator's rotational position
-    function updateIndicatorPosition() {
-        const activeIndex = sectionsData.findIndex(s => s.id === activeSectionId);
-        if (activeIndex === -1) return;
+                // --- Determine Active Section ---
+                contentSections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= viewportCenter && rect.bottom >= viewportCenter) {
+                        currentActiveSection = section;
+                    }
+                });
 
-        const totalSections = sectionsData.length;
-        const startAngle = 300; // Top-right segment start (clockwise from right)
-        const endAngle = 60;   // Bottom-right segment end (clockwise from right)
-        const angleRange = (360 - startAngle) + endAngle;
-
-        const angleStep = angleRange / (totalSections - 1);
-        const targetAngle = startAngle + (activeIndex * angleStep);
-        const arcRadius = 200;
-
-        indicator.style.transform = `rotate(${targetAngle}deg) translateX(${arcRadius}px) rotate(-${targetAngle}deg)`;
-    }
-
-    // Initialize the circular navigation items and get references to 3D content sections
-    function initializeContent() {
-        // Populate sectionsData by reading from the HTML sections
-        const htmlSections = document.querySelectorAll('#contentWrapper > .content-section');
-        sectionsData = Array.from(htmlSections).map(sectionEl => {
-            const id = sectionEl.id;
-            const title = sectionEl.querySelector('h3').textContent;
-            const description = sectionEl.dataset.description || ''; // Get description from data-description attribute
-            return { id: id, title: title, description: description };
-        });
-
-        if (sectionsData.length === 0) {
-            console.warn("No content sections found in HTML.");
-            return;
-        }
-
-        activeSectionId = sectionsData[0].id; // Set initial active section
-
-        const totalSections = sectionsData.length;
-        const navStartAngle = 300;
-        const navEndAngle = 60;
-        const navAngleRange = (360 - navStartAngle) + navEndAngle;
-        const navAngleStep = navAngleRange / (totalSections - 1);
-
-        const containerCenter = 250; // Half of circular-path's 500px conceptual diameter
-        const itemArcRadius = 200; // Radius where items are placed
-
-        // Position inner circular path within the conceptual 500x500 circle
-        circularPath.style.left = `calc(250px - 200px)`;
-        circularPath.style.top = `calc(250px - 200px)`;
-        circularPath.style.width = `400px`;
-        circularPath.style.height = `400px`;
-
-        // Clear previous navigation items before recreating
-        circularNavItemsContainer.innerHTML = '';
-        contentSections = []; // Reset content sections array for dynamic population below
-
-        sectionsData.forEach((section, index) => {
-            // Create circular nav item
-            const navItem = document.createElement('div');
-            navItem.classList.add('circular-nav-item');
-            navItem.setAttribute('data-section-id', section.id);
-
-            const angle = navStartAngle + (index * navAngleStep);
-            const angleRad = (angle * Math.PI) / 180;
-            const itemWidth = 80;
-            const itemHeight = 40;
-
-            navItem.style.left = `${containerCenter + itemArcRadius * Math.cos(angleRad) - itemWidth / 2}px`;
-            navItem.style.top = `${containerCenter + itemArcRadius * Math.sin(angleRad) - itemHeight / 2}px`;
-
-            const spanTitle = document.createElement('span');
-            spanTitle.textContent = section.title;
-            navItem.appendChild(spanTitle);
-
-            navItem.addEventListener('click', () => {
-                const targetSectionElement = document.getElementById(section.id);
-                if (targetSectionElement && scrollContainer) {
-                    // Calculate scroll position to bring target section to center
-                    const sectionHeight = targetSectionElement.offsetHeight;
-                    const scrollCenter = (scrollContainer.offsetHeight / 2) - (sectionHeight / 2);
-                    const targetScrollTop = targetSectionElement.offsetTop - scrollCenter;
-
-                    scrollContainer.scrollTo({
-                        top: targetScrollTop,
-                        behavior: 'smooth'
+                // Fallback: Closest section to center
+                if (!currentActiveSection) {
+                    let minDistance = Infinity;
+                    contentSections.forEach(section => {
+                        const rect = section.getBoundingClientRect();
+                        const sectionCenter = rect.top + rect.height / 2;
+                        const distance = Math.abs(viewportCenter - sectionCenter);
+                        if (distance < minDistance) {
+                            minDistance = distance;
+                            currentActiveSection = section;
+                        }
                     });
                 }
-            });
-            circularNavItemsContainer.appendChild(navItem);
 
-            // Get reference to the existing HTML content section
-            const contentSectionEl = document.getElementById(section.id);
-            if (contentSectionEl) {
-                contentSections.push(contentSectionEl); // Store reference
-                // Set initial absolute positioning for sections
-                // This creates the "stack" where each section has its own absolute top position
-                contentSectionEl.style.top = `${index * 60}vh`; // Adjust this value to control vertical spacing
-            }
-        });
+                // Handle very top or very bottom of scroll
+                const firstSection = contentSections[0];
+                const lastSection = contentSections[contentSections.length - 1];
 
-        // Set the total height of contentWrapper to enable scrolling
-        // (Number of sections * vertical spacing per section) + viewport height buffer
-        // Only set height if contentWrapper has children
-        if (contentSections.length > 0) {
-             // The 'contentWrapper' is now the direct parent of sections.
-             // Its height needs to be sum of section spacing plus one viewport height to allow full scroll
-             contentWrapper.style.height = `${(sectionsData.length * 60) + (scrollContainer.offsetHeight * 0.5)}px`; // Adjusted for scrollContainer.offsetHeight
-        }
-    }
-
-    // Animation loop for 3D content scrolling
-    function animateScroll() {
-        const scrollCenter = scrollContainer.scrollTop + (scrollContainer.offsetHeight / 2);
-
-        contentSections.forEach((section, index) => {
-            const sectionRect = section.getBoundingClientRect();
-            // sectionCenter relative to the scrollContainer's top edge
-            const sectionCenter = (section.offsetTop + section.offsetHeight / 2) - scrollContainer.scrollTop;
-
-
-            // Distance from the center of the scrollContainer's viewport
-            const distance = sectionCenter - (scrollContainer.offsetHeight / 2);
-
-            // Normalizing distance relative to the viewport height (or section height)
-            // Adjust this divisor to control the animation intensity
-            const normalizedDistance = distance / (scrollContainer.offsetHeight * 0.8);
-
-            let rotateX = normalizedDistance * 45; // Max 45 degrees rotation
-            let translateY = normalizedDistance * 100; // Max 100px vertical translation
-            let scale = 1 - Math.abs(normalizedDistance * 0.3); // Scale down as it moves away
-            let opacity = 1 - Math.abs(normalizedDistance * 1.5); // Fade out faster
-            opacity = Math.max(0, Math.min(1, opacity)); // Clamp opacity between 0 and 1
-
-            // Ensure active section is not too distorted
-            if (Math.abs(normalizedDistance) < 0.2) { // Close to center
-                rotateX *= 0.5; // Less rotation near center
-                translateY *= 0.5; // Less translation near center
-                scale = 1; // Keep scale at 1
-                opacity = 1; // Keep active section fully opaque
-                section.classList.add('active');
-            } else {
-                section.classList.remove('active');
-            }
-
-            section.style.transform = `
-                translateY(${translateY}px)
-                rotateX(${rotateX}deg)
-                scale(${scale})
-            `;
-            section.style.opacity = opacity;
-        });
-
-        // Update active section in circular navigation
-        let closestSectionId = activeSectionId;
-        let minDistance = Infinity;
-
-        sectionsData.forEach(section => {
-            const el = document.getElementById(section.id);
-            if (el) {
-                const rect = el.getBoundingClientRect();
-                // Distance from center of scrollContainer viewport
-                const sectionCenterInViewport = rect.top + rect.height / 2 - scrollContainer.getBoundingClientRect().top;
-                const viewportCenter = scrollContainer.offsetHeight / 2;
-                const currentDistance = Math.abs(sectionCenterInViewport - viewportCenter);
-
-                if (currentDistance < minDistance) {
-                    minDistance = currentDistance;
-                    closestSectionId = section.id;
+                if (window.scrollY < firstSection.offsetTop - (window.innerHeight * 0.2)) { // If scrolled significantly above first section
+                    currentActiveSection = firstSection;
+                } else if (window.scrollY + window.innerHeight > mainFooter.offsetTop + (mainFooter.offsetHeight * 0.5)) { // If scrolled into footer
+                    currentActiveSection = lastSection; // Keep last section active
                 }
+
+
+                // --- Update Active Classes & Indicator ---
+                contentSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                navYears.forEach(year => {
+                    year.classList.remove('active');
+                });
+
+                if (currentActiveSection) {
+                    currentActiveSection.classList.add('active');
+                    const activeYearData = currentActiveSection.dataset.year;
+                    const activeNavYear = document.querySelector(`.timeline-year[data-year="${activeYearData}"]`);
+
+                    if (activeNavYear) {
+                        activeNavYear.classList.add('active');
+
+                        const navYearRect = activeNavYear.getBoundingClientRect();
+                        const sidebarRect = timelineNavSidebar.getBoundingClientRect();
+
+                        const indicatorTop = (navYearRect.top - sidebarRect.top) + (navYearRect.height / 2);
+                        timelineIndicator.style.top = `${indicatorTop}px`;
+                    }
+                }
+
+                // --- Handle Sidebar Height based on Footer ---
+                const footerRect = mainFooter.getBoundingClientRect();
+                const sidebarRect = timelineNavSidebar.getBoundingClientRect();
+                const scrollY = window.scrollY;
+
+                // When the footer starts to appear in the viewport (or even slightly before)
+                // We want the sidebar to shrink or "lift up" with the scroll
+                const footerThreshold = window.innerHeight; // When footer bottom is this far from viewport top
+                const footerDistanceToViewportTop = footerRect.top; // Distance of footer's top edge from viewport top
+
+                // Calculate how much sidebar should shrink
+                // If footer top is below window height, sidebar height is full.
+                // As footer top comes up (gets smaller), sidebar height shrinks.
+                let newSidebarHeight = '100vh';
+                let newLineHeight = 'calc(100% - 12rem)';
+
+                // If footer's top edge is within the viewport
+                if (footerDistanceToViewportTop < window.innerHeight) {
+                    // Calculate remaining space above footer
+                    // Max height should be `footerRect.top` (distance from top of viewport to footer top)
+                    // We also need to consider the `top` padding of the sidebar.
+                    const availableSpace = footerDistanceToViewportTop;
+                    const sidebarTopPadding = parseFloat(getComputedStyle(timelineNavSidebar).paddingTop);
+                    const sidebarBottomPadding = parseFloat(getComputedStyle(timelineNavSidebar).paddingBottom);
+
+                    // Ensure sidebar doesn't go below its top padding or zero height
+                    newSidebarHeight = Math.max(sidebarTopPadding + sidebarBottomPadding, availableSpace); // + 50 for some buffer at the bottom
+                    newLineHeight = Math.max(0, availableSpace - sidebarTopPadding - sidebarBottomPadding);
+
+                    // Convert to pixels for setting style directly
+                    newSidebarHeight = `${newSidebarHeight}px`;
+                    newLineHeight = `${newLineHeight}px`;
+
+                    // Also make sure the sidebar itself doesn't start moving up if its top is above the viewport
+                    if (sidebarRect.top < 0) {
+                       timelineNavSidebar.style.top = `${scrollY}px`; // Make it scroll with the content if its fixed point is no longer top of viewport
+                    } else {
+                       timelineNavSidebar.style.top = '0'; // Keep it fixed at the top
+                    }
+
+                } else {
+                    timelineNavSidebar.style.top = '0'; // Reset top if footer is not in view
+                }
+
+                timelineNavSidebar.style.height = newSidebarHeight;
+                timelineLineTrack.style.height = newLineHeight;
+
+                // Adjust the height of the header logo as well if it's supposed to stick with the menu
+                // However, header-logo is outside timelineNavSidebar, so it needs its own logic if it should also shrink.
+                // For now, it stays fixed.
             }
+
+
+            // Click listener for navigation years
+            navYears.forEach(yearNav => {
+                yearNav.addEventListener('click', () => {
+                    const sectionId = yearNav.dataset.sectionId;
+                    const targetSection = document.getElementById(sectionId);
+                    if (targetSection) {
+                        const offset = (window.innerHeight - targetSection.offsetHeight) / 2;
+                        window.scrollTo({
+                            top: targetSection.offsetTop - offset,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Event listeners
+            window.addEventListener('scroll', updateTimeline);
+            window.addEventListener('resize', updateTimeline); // Update on resize to handle layout changes
+
+            // Initial call on page load
+            updateTimeline();
         });
-
-        if (closestSectionId !== activeSectionId) {
-            const prevActiveNavItem = document.querySelector(`.circular-nav-item[data-section-id="${activeSectionId}"]`);
-            if (prevActiveNavItem) prevActiveNavItem.classList.remove('active');
-
-            const newActiveNavItem = document.querySelector(`.circular-nav-item[data-section-id="${closestSectionId}"]`);
-            if (newActiveNavItem) newActiveNavItem.classList.add('active');
-
-            activeSectionId = closestSectionId;
-            updateIndicatorPosition();
-        }
-
-        animationFrameId = requestAnimationFrame(animateScroll);
-    }
-
-    // --- Event Listeners and Initial Setup ---
-    window.addEventListener('DOMContentLoaded', () => {
-        initializeContent();
-        updateIndicatorPosition(); // Set initial indicator position
-        if (scrollContainer) {
-            // Manually trigger scroll animation once after content is initialized
-            // to set initial 3D transforms correctly for the first section
-            animateScroll();
-        }
-    });
-
-    // Start/Stop animation frame on scroll event
-    scrollContainer.addEventListener('scroll', () => {
-        if (animationFrameId) cancelAnimationFrame(animationFrameId); // Cancel previous frame
-        animationFrameId = requestAnimationFrame(animateScroll); // Request new frame
-    });
-
-    // Recalculate positions on window resize
-    window.addEventListener('resize', () => {
-        // Re-initialize content to re-position sections and re-calculate wrapper height
-        initializeContent();
-        updateIndicatorPosition();
-        // Re-run animation frame
-        if (animationFrameId) cancelAnimationFrame(animationFrameId);
-        animateScroll();
-    });
-</script>
+    </script>
+</body>
+</html>
