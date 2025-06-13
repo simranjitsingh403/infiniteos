@@ -6846,6 +6846,7 @@ body.single-case {
     width: 100%;
     display: flex;
     justify-content: center; /* horizontally center the <ol> inside nav */
+    font-family: "PP Neue Montreal","Arial",sans-serif !important;
 }
 
 ._headerNavOl_qr60b_312 {

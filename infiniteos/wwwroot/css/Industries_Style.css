@@ -1,0 +1,630 @@
+﻿.words .words__gradient {
+    background: rgb(0,0,0);
+    background: -moz-linear-gradient(180deg, rgba(0,0,0,1) 0%,rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.90) 25%,rgba(0,0,0,0.85) 30%,rgba(0,0,0,0.80) 35%, rgba(0,0,0,0) 45%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.80) 65%,rgba(0,0,0,0.85) 70%, rgba(0,0,0,0.90) 75%,rgba(0,0,0,0.95) 80%, rgba(0,0,0,1) 100%);
+    background: -webkit-linear-gradient(180deg, rgba(0,0,0,1) 0%,rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.90) 25%,rgba(0,0,0,0.85) 30%,rgba(0,0,0,0.80) 35%, rgba(0,0,0,0) 45%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.80) 65%,rgba(0,0,0,0.85) 70%, rgba(0,0,0,0.90) 75%,rgba(0,0,0,0.95) 80%, rgba(0,0,0,1) 100%);
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%,rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.90) 25%,rgba(0,0,0,0.85) 30%,rgba(0,0,0,0.80) 35%, rgba(0,0,0,0) 45%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.80) 65%,rgba(0,0,0,0.85) 70%, rgba(0,0,0,0.90) 75%,rgba(0,0,0,0.95) 80%, rgba(0,0,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#000000",GradientType=1);
+}
+
+.contact-section {
+    position: sticky;
+    top: 80px;
+    z-index: 1;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    display: flex;
+    background-color: #0a0a0a;
+    border-top: 1px solid #2a2a2a;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+:root {
+    --sqsmall: 0.41667vw;
+    --vh: 4.6000000000000005px;
+    --font-primary: "PP Neue Montreal", "Arial", sans-serif;
+}
+
+#navbar *::before,
+#navbar *::after {
+    box-sizing: border-box;
+}
+
+nav ol {
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: "PP Neue Montreal", "Arial", sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    scrollbar-width: none;
+}
+
+.main-content::-webkit-scrollbar {
+    display: none
+}
+
+@media (min-width: 64em) {
+    ._headerNavOl_qr60b_312 li {
+        display: flex;
+        flex: 1 1 0;
+        align-items: center;
+        justify-content: center;
+        max-width: 100px;
+        padding: 0 8px;
+    }
+}
+
+#navBar {
+    background: transparent;
+}
+
+#navbar_links {
+    width: inherit;
+    text-align: right;
+}
+
+    #navbar_links li {
+        display: inline-block;
+        margin: 0 0.5%;
+        font-weight: 500;
+    }
+
+        #navbar_links li:hover {
+            color: lightskyblue;
+        }
+
+#webgl-canvas-About-us {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Behind your content */
+}
+
+#about-us {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.jumble-text {
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+._headerNav_qr60b_153 {
+    width: 100%;
+    display: flex;
+}
+
+._headerNavOl_qr60b_312 {
+    display: flex;
+    gap: 4%; /* space between nav items */
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+}
+
+._textScrambleAnimation_1mtai_28 {
+    position: relative;
+    display: block;
+    white-space: nowrap;
+}
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    background: #010a33;
+    z-index: 1;
+}
+
+.footer-container {
+    position: relative;
+    height: 200vh;
+    background: #010a33;
+    overflow: hidden;
+}
+
+.main-footer {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.footer-fixed-content {
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+    color: #2a1f53;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    padding: 16.25vw 0 2.5vw;
+    padding: calc(15vw + var(--sqsmall) * 3) 0 calc(var(--sqsmall) * 6);
+}
+
+.footer-animated-title {
+    font-family: PP Neue Montreal, Arial, sans-serif;
+    font-family: var(--font-primary);
+    font-size: 4.5vw;
+    font-weight: 700;
+    line-height: .85;
+    margin-bottom: 1.66667vw;
+    margin-bottom: calc(var(--sqsmall) * 4);
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 0;
+}
+
+    .footer-animated-title .char {
+        display: inline-block;
+    }
+
+#footerRestContent {
+    color: rgba(255, 255, 255, .5);
+    font-size: 1.25vw;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+    line-height: 1.2;
+    font-weight: 400;
+    margin-bottom: 2rem;
+}
+
+.footer-content {
+    justify-content: center;
+}
+
+#footerBottomLinks {
+    bottom: 5.5vw;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+}
+
+    #footerBottomLinks.social {
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+    }
+
+        #footerBottomLinks.social li:not(:last-child) {
+            margin-right: .83333vw;
+            margin-right: calc(var(--sqsmall) * 2);
+        }
+/* Main container for the whole layout */
+.timeline-container {
+    display: flex;
+    /* min-height: 150vh; REMOVED: Will be handled by content sections + footer */
+    padding-bottom: 2rem; /* Space for bottom scroll, before footer */
+    min-height: calc(100vh + 800px); /* Ensure initial scrollability, adjust as needed */
+}
+
+/* Fixed Left Sidebar (Timeline Navigation) */
+.timeline-nav-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh; /* Default height */
+    width: 250px; /* Width of the sidebar */
+    display: none;
+    flex-direction: column;
+    justify-content: center; /* Vertically center the timeline years */
+    align-items: center;
+    padding-top: 6rem; /* Adjust for top logo/header space */
+    padding-bottom: 6rem;
+    box-sizing: border-box;
+    background-color: transparent; /* Or a subtle background if needed */
+    z-index: 1000;
+    transition: height 0.3s ease-out; /* Smooth transition for height change */
+    overflow: hidden; /* Hide content when shrinking */
+}
+
+/* Logo/Star at the very top-left */
+.header-logo {
+    position: fixed;
+    top: 2.5rem; /* Distance from top */
+    left: 2.5rem; /* Distance from left */
+    font-size: 2.5rem;
+    color: #8a2be2; /* Purple */
+    font-weight: 800;
+    z-index: 1001;
+}
+
+/* Vertical Line in the Timeline */
+.timeline-line-track {
+    position: absolute;
+    left: 20%; /* Center horizontally within sidebar */
+    transform: translateX(-50%);
+    width: 2px; /* Thickness of the line */
+    height: calc(100% - 12rem); /* Line extends almost full height, adjusted for padding */
+    background-color: rgba(255, 255, 255, 0.1); /* Faded line color */
+    border-radius: 1px;
+    /* Add transition for smooth shrinking */
+    transition: height 0.3s ease-out;
+}
+
+/* Moving Indicator Dot/Line */
+.timeline-indicator {
+    position: absolute;
+    left: 20%; /* Center horizontally within sidebar */
+    width: 8px; /* Width of the dot */
+    height: 8px; /* Height of the dot */
+    background-color: #8a2be2; /* Purple indicator */
+    border-radius: 50%; /* Makes it a dot */
+    transform: translate(-50%, -50%); /* Centers the dot precisely */
+    transition: top 0.3s ease-out; /* Smooth movement */
+    z-index: 1002; /* Above the line */
+}
+
+/* Timeline Years (Navigation Items) */
+.timeline-year-nav {
+    position: relative; /* For absolute positioning of years */
+    width: 100%; /* Take full width of sidebar for alignment */
+    height: 100%; /* Fill available space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; /* Distribute years evenly */
+    align-items: flex-start; /* Align text to the left */
+}
+
+.timeline-year {
+    position: absolute; /* Allows precise vertical positioning */
+    left: 20%; /* Start year text near the center line */
+    transform: translateX(-10px); /* Push text right of the line initially */
+    white-space: nowrap; /* Prevent year text from wrapping */
+    cursor: pointer;
+    text-align: left;
+    padding-left: 1rem; /* Space between line and text */
+    transition: color 0.3s ease, font-size 0.3s ease, transform 0.3s ease;
+}
+
+    .timeline-year span {
+        display: block; /* Make year text take full width */
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.4);
+    }
+
+    .timeline-year.active span {
+        color: #ffffff;
+        font-size: 1.4rem;
+        font-weight: 700;
+        transform: translateX(10px); /* Move active year further right */
+    }
+
+/* Custom year positions (adjust as needed based on content sections) */
+.year-1983-nav {
+    top: 10%;
+}
+
+.year-2019-nav {
+    top: 30%;
+}
+
+.year-2021-nav {
+    top: 50%;
+}
+
+.year-2022-nav {
+    top: 70%;
+}
+
+.year-2024-nav {
+    top: 90%;
+}
+
+
+/* Right Content Area */
+.timeline-content-area {
+}
+
+.timeline-content-section {
+    min-height: 50vh; /* Each section should be tall enough to scroll */
+    margin-bottom: 2rem; /* Space between sections */
+    padding-left: 2.5rem; /* Space for the vertical line if desired on content side */
+    border-left: 2px solid rgba(255, 255, 255, 0.1); /* Subtle content border line */
+    display: flex;
+    flex-direction: column;
+    opacity: 0.5; /* Faded when not active */
+    transition: opacity 0.4s ease;
+}
+
+    .timeline-content-section.active {
+        opacity: 1; /* Fully visible when active */
+    }
+
+    .timeline-content-section h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: #ffffff;
+    }
+
+    .timeline-content-section p {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: #ccc;
+    }
+
+
+/* Responsive Adjustments */
+@@media (max-width: 768px) {
+    .timeline-container {
+        flex-direction: column; /* Stack content vertically */
+        padding-top: 1rem;
+    }
+
+    .timeline-nav-sidebar {
+        position: relative; /* No longer fixed */
+        width: 100%;
+        height: auto; /* Height adapts to content */
+        flex-direction: row; /* Years side-by-side */
+        justify-content: space-around;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        background-color: #222; /* Add a background to the nav bar */
+        overflow-x: auto; /* Allow horizontal scrolling for years if many */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    }
+
+    .header-logo {
+        position: relative; /* No longer fixed */
+        top: auto;
+        left: auto;
+        text-align: center;
+        margin-bottom: 1rem;
+        display: block;
+        width: 100%;
+    }
+
+    .timeline-line-track, .timeline-indicator {
+        display: none; /* Hide vertical line and dot on mobile */
+    }
+
+    .timeline-year-nav {
+        flex-direction: row; /* Years in a row */
+        height: auto;
+        padding: 0 1rem;
+    }
+
+    .timeline-year {
+        position: relative; /* Reset positioning */
+        left: auto;
+        transform: translateX(0);
+        padding: 0 0.5rem; /* Adjust padding for horizontal layout */
+    }
+
+        .timeline-year span {
+            font-size: 0.9rem;
+        }
+
+        .timeline-year.active span {
+            font-size: 1.1rem;
+            transform: translateX(0);
+        }
+
+    .timeline-content-area {
+        margin-left: 0; /* Remove left margin */
+        padding: 2rem 1rem;
+    }
+
+    .timeline-content-section {
+        min-height: 60vh; /* Shorter sections on mobile */
+        margin-bottom: 3rem;
+    }
+
+    .main-footer {
+        padding-left: 1rem; /* Remove left offset on mobile */
+        padding-right: 1rem;
+    }
+
+    .footer-column {
+        text-align: center;
+        width: 100%; /* Stack columns on small screens */
+        min-width: unset;
+    }
+}
+
+.second-section {
+    flex: 0 0 63%; /* Fixed 50% width */
+    padding: 0 4%;
+}
+
+.third-section {
+    flex: 0 0 22%; /* Fixed 25% width */
+}
+
+.text-left {
+    position: absolute;
+    top: 37%;
+    text-align: left;
+    width: 500px;
+    padding-right: 20px; /* Add some padding to the right of the text */
+}
+
+    .text-left h1 {
+        font-size: 4em; /* Adjust as needed for the large heading */
+        font-weight: 600; /* Looks bold in the image */
+        line-height: 1.1;
+        margin: 0; /* Remove default margin */
+        color: #fff;
+    }
+
+.video-background {
+    position: relative; /* Fixes the video to the viewport */
+    top: 0;
+    left: 21%;
+    width: 60%;
+    height: 100%;
+    z-index: -1; /* Puts the video behind other content */
+    overflow: hidden; /* Hide any overflow if the video aspect ratio doesn't match perfectly */
+}
+
+.responsive-video {
+    width: 50%; /* reduce width */
+    height: auto; /* maintain aspect ratio */
+    max-width: 100%;
+    display: block;
+    margin: auto;
+}
+
+.video-background video {
+    min-width: 100%; /* Ensure video covers at least 100% width */
+    min-height: 100%; /* Ensure video covers at least 100% height */
+    width: auto; /* Allow auto width to maintain aspect ratio */
+    height: auto; /* Allow auto height to maintain aspect ratio */
+    position: absolute; /* Position video within its fixed parent */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the video */
+    object-fit: cover; /* Ensures the video covers the entire area, cropping as needed */
+    filter: brightness(0.7); /* Optional: Make the video a bit darker for better text readability */
+}
+
+/* Optional: Video Overlay */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Semi-transparent black overlay */
+    z-index: 0; /* Stays above the video but below content */
+}
+
+.text-overlay-right {
+    position: absolute; /* Positioned absolutely within .hero-section */
+    right: 0%;
+    top: 50%; /* Adjust vertical position */
+    transform: translateY(-50%); /* Center vertically relative to its top */
+    width: 500px; /* Max width for the paragraph text */
+    background-color: transparent; /* No background, just text */
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 2; /* Ensure it's above the image */
+    text-align: left; /* Align text to the left */
+}
+
+    .text-overlay-right p {
+        font-size: 1.1em; /* Adjust font size */
+        color: #ccc; /* Slightly greyed out for readability */
+        line-height: 1.5;
+        margin: 0;
+    }
+
+._heroWrapper_1b5c0_23:after {
+    width: 0;
+}
+
+.footer-animated-title .char {
+    display: inline-block;
+    opacity: 0;
+    color: #2a1f53;
+    transition: color 0.4s ease, opacity 0.4s ease;
+    font-weight: 700;
+    line-height: .85;
+    font-size: 70px;
+}
+
+.footer-container canvas {
+    height: 100%;
+    width: 100%;
+}
+
+.footer-word {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    margin-right: 4px;
+}
+
+    .footer-word.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+#footerBottomLinks {
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+#webgl-canvas {
+    background: linear-gradient(130deg, #000a33, #000726, #48008d);
+    background-size: 200% 200%;
+    -webkit-animation: Animation 3s ease infinite;
+    -moz-animation: Animation 3s ease infinite;
+    animation: Animation 3s ease infinite;
+}
+
+@-webkit-keyframes Animation {
+    0% {
+        background-position: 10% 0%
+    }
+
+    50% {
+        background-position: 91% 100%
+    }
+
+    100% {
+        background-position: 10% 0%
+    }
+}
+
+@-moz-keyframes Animation {
+    0% {
+        background-position: 10% 0%
+    }
+
+    50% {
+        background-position: 91% 100%
+    }
+
+    100% {
+        background-position: 10% 0%
+    }
+}
+
+@keyframes Animation {
+    0% {
+        background-position: 10% 0%
+    }
+
+    50% {
+        background-position: 91% 100%
+    }
+
+    100% {
+        background-position: 10% 0%
+    }
+}
+
+#footer {
+    padding:0;
+}

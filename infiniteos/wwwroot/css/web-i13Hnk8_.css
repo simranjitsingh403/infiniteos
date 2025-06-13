@@ -196,7 +196,7 @@
         width: 100%;
         padding: 0 12px;
         color: #ffffffbf;
-        text-transform: uppercase;
+        /*text-transform: uppercase;*/
         cursor: pointer;
         transition: color .3s linear,background-color .5s linear
     }
